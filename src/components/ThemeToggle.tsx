@@ -36,11 +36,11 @@ const ThemeToggle: React.FC = () => {
       <Toggle 
         pressed={isDarkMode}
         onPressedChange={toggleTheme}
-        className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-lg border border-white/20 dark:bg-black/20 dark:border-white/10 hover:scale-110 transition-all duration-300"
+        className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-lg border border-white/20 dark:bg-gray-800/40 dark:border-gray-700/30 hover:scale-110 transition-all duration-300"
         aria-label="Toggle theme"
       >
         {isDarkMode ? (
-          <Moon className="h-5 w-5 text-white/90" />
+          <Moon className="h-5 w-5 text-white" />
         ) : (
           <Sun className="h-5 w-5 text-black/80" />
         )}
