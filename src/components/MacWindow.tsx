@@ -17,7 +17,7 @@ const MacWindow: React.FC<MacWindowProps> = ({ title, children, className = '' }
       </div>
       
       {title && (
-        <div className="text-center text-sm font-medium text-gray-400 dark:text-gray-300 pt-2 pb-4">
+        <div className="text-center text-sm font-medium text-gray-500 dark:text-gray-200 pt-2 pb-4">
           {title}
         </div>
       )}

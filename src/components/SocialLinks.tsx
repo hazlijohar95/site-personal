@@ -9,7 +9,7 @@ const SocialLinks: React.FC = () => {
         href="https://x.com/hazlijohar" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="text-gray-700 hover:text-blue-500 transition-colors duration-300 dark:text-gray-200 dark:hover:text-blue-400"
+        className="text-gray-700 hover:text-blue-500 transition-colors duration-300 dark:text-gray-100 dark:hover:text-blue-300"
         aria-label="Twitter"
       >
         <Twitter size={20} />
@@ -18,7 +18,7 @@ const SocialLinks: React.FC = () => {
         href="https://www.instagram.com/hazlijohar/" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="text-gray-700 hover:text-pink-500 transition-colors duration-300 dark:text-gray-200 dark:hover:text-pink-400"
+        className="text-gray-700 hover:text-pink-500 transition-colors duration-300 dark:text-gray-100 dark:hover:text-pink-300"
         aria-label="Instagram"
       >
         <Instagram size={20} />
@@ -27,7 +27,7 @@ const SocialLinks: React.FC = () => {
         href="https://www.linkedin.com/in/hazli-johar/" 
         target="_blank" 
         rel="noopener noreferrer"
-        className="text-gray-700 hover:text-blue-700 transition-colors duration-300 dark:text-gray-200 dark:hover:text-blue-400"
+        className="text-gray-700 hover:text-blue-700 transition-colors duration-300 dark:text-gray-100 dark:hover:text-blue-300"
         aria-label="LinkedIn"
       >
         <Linkedin size={20} />
