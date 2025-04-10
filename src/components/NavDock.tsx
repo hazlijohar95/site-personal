@@ -57,12 +57,12 @@ const DockItem: React.FC<DockItemProps> = ({ icon, label, isActive, onClick }) =
   return (
     <div className="flex flex-col items-center">
       <div 
-        className={`dock-item ${isActive ? 'bg-white/30' : ''}`}
+        className={`dock-item ${isActive ? 'bg-white/30 dark:bg-slate-500/90' : ''}`}
         onClick={onClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        <div className={`text-black/80 ${isHovered ? 'scale-110' : ''} transition-transform duration-200`}>
+        <div className={`text-black/80 dark:text-white ${isHovered ? 'scale-110' : ''} transition-transform duration-200`}>
           {icon}
         </div>
       </div>

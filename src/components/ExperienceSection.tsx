@@ -60,10 +60,10 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
     <div className="glass-panel p-6 hover-lift">
       <div className="flex justify-between items-start mb-4">
         <div className="flex-1">
-          <h3 className="text-lg font-semibold">{experience.role}</h3>
-          <p className="text-gray-600">{experience.company}</p>
+          <h3 className="text-lg font-semibold dark:text-white">{experience.role}</h3>
+          <p className="text-gray-600 dark:text-gray-300">{experience.company}</p>
         </div>
-        <div className="flex items-center gap-1 bg-gray-100 px-3 py-1 rounded-full text-xs text-gray-700">
+        <div className="flex items-center gap-1 bg-gray-100 dark:bg-slate-700 px-3 py-1 rounded-full text-xs text-gray-700 dark:text-gray-200">
           <Calendar size={12} />
           <span>{experience.period}</span>
         </div>
@@ -72,7 +72,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
       {experience.isActive && (
         <div className="flex items-center gap-1.5">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-xs text-green-600 font-medium">Active</span>
+          <span className="text-xs text-green-600 dark:text-green-400 font-medium">Active</span>
         </div>
       )}
     </div>

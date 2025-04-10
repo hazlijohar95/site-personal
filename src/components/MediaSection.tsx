@@ -41,7 +41,7 @@ const MediaSection: React.FC = () => {
           
           <div className="md:col-span-1">
             <MacWindow title="Video.mp4">
-              <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden">
+              <div className="aspect-video bg-gray-100 dark:bg-slate-700 rounded-lg overflow-hidden">
                 <iframe 
                   className="w-full h-full"
                   src="https://www.youtube.com/embed/6-vCOhPvleQ?si=NTNkg44hUYLkyUnP" 
@@ -52,7 +52,7 @@ const MediaSection: React.FC = () => {
                   allowFullScreen
                 ></iframe>
               </div>
-              <div className="mt-4 text-sm text-gray-600">
+              <div className="mt-4 text-sm text-gray-600 dark:text-gray-300">
                 <p>Featured on RTM (Youtube)</p>
               </div>
             </MacWindow>
@@ -93,12 +93,12 @@ const MediaCard: React.FC<MediaCardProps> = ({ media }) => {
       rel="noopener noreferrer"
       className="glass-panel p-4 hover-lift flex items-start gap-3 no-underline"
     >
-      <div className="mt-1 text-blue-500">
+      <div className="mt-1 text-blue-500 dark:text-blue-400">
         {getIcon(media.type)}
       </div>
       <div>
-        <h3 className="text-base font-medium text-gray-800 mb-1">{media.title}</h3>
-        <p className="text-sm text-gray-500">{media.source}</p>
+        <h3 className="text-base font-medium text-gray-800 dark:text-white mb-1">{media.title}</h3>
+        <p className="text-sm text-gray-500 dark:text-gray-300">{media.source}</p>
       </div>
     </a>
   );
