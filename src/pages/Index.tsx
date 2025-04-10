@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import NavDock from '../components/NavDock';
 import ProfileSection from '../components/ProfileSection';
@@ -59,9 +60,17 @@ const Index = () => {
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
             Hazli Johar
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Entrepreneur • Consultant • Builder
-          </p>
+          <div className="mb-8">
+            <p className="text-xl md:text-2xl text-gray-700 font-mono border border-gray-300 bg-gray-100 p-4 rounded-lg inline-block">
+              <span className="text-blue-600">&lt;</span>
+              <span className="text-green-600">Decoding</span> 
+              <span className="text-gray-800">The</span> 
+              <span className="text-purple-600">Future</span> 
+              <span className="text-orange-600">of</span> 
+              <span className="text-red-600">Accounting</span>
+              <span className="text-blue-600">/&gt;</span>
+            </p>
+          </div>
           <div className="flex flex-wrap justify-center gap-4">
             <button 
               onClick={() => handleNavigation('profile')}
