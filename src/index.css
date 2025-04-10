@@ -38,6 +38,36 @@
     --radius: 0.75rem;
   }
 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+
   * {
     @apply border-border;
   }
@@ -54,7 +84,7 @@
 
 @layer components {
   .glass-panel {
-    @apply bg-white/80 backdrop-blur-lg border border-white/20 shadow-lg rounded-xl;
+    @apply bg-white/80 backdrop-blur-lg border border-white/20 shadow-lg rounded-xl dark:bg-black/20 dark:border-white/10;
   }
   
   .glass-panel-dark {
@@ -62,11 +92,11 @@
   }
   
   .glass-button {
-    @apply bg-white/20 backdrop-blur-md border border-white/20 hover:bg-white/30 transition-all duration-300 rounded-lg px-4 py-2 text-sm font-medium;
+    @apply bg-white/20 backdrop-blur-md border border-white/20 hover:bg-white/30 transition-all duration-300 rounded-lg px-4 py-2 text-sm font-medium dark:bg-black/20 dark:border-white/10 dark:hover:bg-black/30;
   }
 
   .macos-window {
-    @apply glass-panel p-6 relative overflow-hidden transition-all duration-300;
+    @apply glass-panel p-6 relative overflow-hidden transition-all duration-300 dark:bg-black/30 dark:border-white/5;
   }
   
   .macos-window-header {
@@ -90,11 +120,11 @@
   }
   
   .dock {
-    @apply fixed bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 p-2 bg-white/20 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg z-50;
+    @apply fixed bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 p-2 bg-white/20 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg z-50 dark:bg-black/20 dark:border-white/10;
   }
   
   .dock-item {
-    @apply w-12 h-12 rounded-lg flex items-center justify-center bg-white/10 backdrop-blur-md hover:bg-white/30 transition-all duration-300 hover:scale-110 cursor-pointer;
+    @apply w-12 h-12 rounded-lg flex items-center justify-center bg-white/10 backdrop-blur-md hover:bg-white/30 transition-all duration-300 hover:scale-110 cursor-pointer dark:bg-black/20 dark:hover:bg-black/40;
   }
   
   .hover-lift {
