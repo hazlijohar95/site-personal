@@ -6,17 +6,18 @@ import { Toggle } from "@/components/ui/toggle";
 const ThemeToggle: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Initialize theme based on user preference or system theme
+  // Initialize theme based on user preference or system theme, but defaulting to light mode
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    if (savedTheme === 'dark') {
       setIsDarkMode(true);
       document.documentElement.classList.add('dark');
     } else {
+      // Default to light mode
       setIsDarkMode(false);
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     }
   }, []);
 
