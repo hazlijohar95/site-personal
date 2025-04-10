@@ -3,6 +3,7 @@ import React from 'react';
 import MacWindow from './MacWindow';
 import SocialLinks from './SocialLinks';
 import { MapPin, Calendar, Briefcase } from 'lucide-react';
+import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 
 const ProfileSection: React.FC = () => {
   return (
@@ -12,9 +13,9 @@ const ProfileSection: React.FC = () => {
           <div className="md:col-span-1">
             <MacWindow className="h-full">
               <div className="flex flex-col items-center">
-                <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-white/20 dark:border-slate-600/50 hover-lift">
+                <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-white/20 dark:border-slate-400/50 hover-lift">
                   <img 
-                    src="https://placehold.co/400x400" 
+                    src="/lovable-uploads/c90088f8-4c29-43a9-a20b-4a664df5149f.png" 
                     alt="Hazli Johar" 
                     className="w-full h-full object-cover"
                   />
@@ -64,3 +65,4 @@ const ProfileSection: React.FC = () => {
 };
 
 export default ProfileSection;
+
