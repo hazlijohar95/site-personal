@@ -73,8 +73,10 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans overflow-x-hidden;
+    @apply bg-background text-foreground font-sans overflow-x-hidden touch-manipulation;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
   }
 
   ::selection {
@@ -97,6 +99,10 @@
 
   .macos-window {
     @apply glass-panel p-6 relative overflow-hidden transition-all duration-300 dark:bg-slate-800/90 dark:border-slate-600/20;
+  }
+  
+  .mobile-window {
+    @apply p-4 rounded-lg;
   }
   
   .macos-window-header {
@@ -123,6 +129,10 @@
     @apply fixed bottom-4 left-1/2 transform -translate-x-1/2 flex items-center gap-2 p-2 bg-white/20 backdrop-blur-xl rounded-2xl border border-white/20 shadow-lg z-50 dark:bg-slate-700/90 dark:border-slate-600/50;
   }
   
+  .mobile-dock {
+    @apply bottom-6 p-1.5 gap-1 bg-white/30 dark:bg-slate-800/90 rounded-xl shadow-lg border border-white/40 dark:border-slate-700/80;
+  }
+  
   .dock-item {
     @apply w-12 h-12 rounded-lg flex items-center justify-center bg-white/10 backdrop-blur-md hover:bg-white/30 transition-all duration-300 hover:scale-110 cursor-pointer dark:bg-slate-600/80 dark:hover:bg-slate-500/90 dark:text-white;
   }
@@ -136,4 +146,43 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Mobile-specific utilities */
+  @media (max-width: 768px) {
+    .dock-item {
+      @apply w-10 h-10;
+    }
+    
+    .macos-window {
+      @apply shadow-md;
+    }
+    
+    .glass-button {
+      @apply px-3 py-1.5;
+    }
+  }
+}
+
+/* Add smooth scrolling to iOS */
+@supports (-webkit-touch-callout: none) {
+  .smooth-scroll {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Remove tap highlight color on mobile */
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Optimize performance on mobile */
+* {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
 }

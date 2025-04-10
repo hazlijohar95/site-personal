@@ -2,9 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 import { Toggle } from "@/components/ui/toggle";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const ThemeToggle: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const isMobile = useIsMobile();
 
   // Initialize theme based on user preference or system theme, but defaulting to light mode
   useEffect(() => {
@@ -33,17 +35,17 @@ const ThemeToggle: React.FC = () => {
   };
 
   return (
-    <div className="absolute top-4 right-4 z-50">
+    <div className={`${isMobile ? 'fixed' : 'absolute'} top-4 right-4 z-50`}>
       <Toggle 
         pressed={isDarkMode}
         onPressedChange={toggleTheme}
-        className="w-10 h-10 rounded-full bg-white/40 backdrop-blur-lg border border-white/30 dark:bg-slate-700/70 dark:border-slate-600/50 hover:scale-110 transition-all duration-300 shadow-md"
+        className={`${isMobile ? 'w-9 h-9' : 'w-10 h-10'} rounded-full bg-white/40 backdrop-blur-lg border border-white/30 dark:bg-slate-700/70 dark:border-slate-600/50 hover:scale-110 active:scale-95 transition-all duration-300 shadow-md`}
         aria-label="Toggle theme"
       >
         {isDarkMode ? (
-          <Moon className="h-5 w-5 text-white" />
+          <Moon className={`h-${isMobile ? '4' : '5'} w-${isMobile ? '4' : '5'} text-white`} />
         ) : (
-          <Sun className="h-5 w-5 text-black/80" />
+          <Sun className={`h-${isMobile ? '4' : '5'} w-${isMobile ? '4' : '5'} text-black/80`} />
         )}
       </Toggle>
     </div>

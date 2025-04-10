@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 interface MacWindowProps {
   title?: string;
@@ -8,8 +9,10 @@ interface MacWindowProps {
 }
 
 const MacWindow: React.FC<MacWindowProps> = ({ title, children, className = '' }) => {
+  const isMobile = useIsMobile();
+  
   return (
-    <div className={`macos-window ${className}`}>
+    <div className={`macos-window ${isMobile ? 'mobile-window' : ''} ${className}`}>
       <div className="macos-window-header">
         <div className="window-action window-close" />
         <div className="window-action window-minimize" />
@@ -22,7 +25,7 @@ const MacWindow: React.FC<MacWindowProps> = ({ title, children, className = '' }
         </div>
       )}
       
-      <div className="pt-8">
+      <div className={`${isMobile ? 'pt-6' : 'pt-8'}`}>
         {children}
       </div>
     </div>
@@ -30,4 +33,3 @@ const MacWindow: React.FC<MacWindowProps> = ({ title, children, className = '' }
 };
 
 export default MacWindow;
-
