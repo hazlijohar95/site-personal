@@ -1,10 +1,19 @@
 
 import React from 'react';
-import { Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Twitter, Instagram, Linkedin, Globe } from 'lucide-react';
 
 const SocialLinks: React.FC = () => {
   return (
     <div className="flex items-center gap-4">
+      <a 
+        href="https://hazli.bearblog.dev" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="text-gray-700 hover:text-green-600 transition-colors duration-300 dark:text-gray-100 dark:hover:text-green-400"
+        aria-label="Blog"
+      >
+        <Globe size={20} />
+      </a>
       <a 
         href="https://x.com/hazlijohar" 
         target="_blank" 
