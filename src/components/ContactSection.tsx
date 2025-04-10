@@ -1,0 +1,90 @@
+
+import React from 'react';
+import MacWindow from './MacWindow';
+import SocialLinks from './SocialLinks';
+import { Mail, Send } from 'lucide-react';
+
+const ContactSection: React.FC = () => {
+  return (
+    <section id="contact" className="min-h-screen flex flex-col items-center justify-center p-6">
+      <div className="max-w-4xl w-full">
+        <MacWindow title="Contact.app">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <h2 className="text-2xl font-semibold mb-4">Get in touch</h2>
+              <p className="text-gray-600 mb-6">
+                Feel free to reach out for collaborations, speaking engagements, or just to say hello!
+              </p>
+              
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                  <Mail size={18} className="text-blue-600" />
+                </div>
+                <a 
+                  href="mailto:work@hazlijohar.com"
+                  className="text-blue-600 hover:underline"
+                >
+                  work@hazlijohar.com
+                </a>
+              </div>
+              
+              <div className="mt-8">
+                <h3 className="text-sm font-medium text-gray-500 mb-3">CONNECT WITH ME</h3>
+                <SocialLinks />
+              </div>
+            </div>
+            
+            <div className="glass-panel p-6">
+              <form>
+                <div className="mb-4">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    className="w-full px-3 py-2 bg-white/70 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Your name"
+                  />
+                </div>
+                
+                <div className="mb-4">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    className="w-full px-3 py-2 bg-white/70 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Your email"
+                  />
+                </div>
+                
+                <div className="mb-4">
+                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    className="w-full px-3 py-2 bg-white/70 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[120px]"
+                    placeholder="Your message"
+                  />
+                </div>
+                
+                <button 
+                  type="button"
+                  className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-300"
+                >
+                  <Send size={16} />
+                  <span>Send Message</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </MacWindow>
+      </div>
+    </section>
+  );
+};
+
+export default ContactSection;
