@@ -86,6 +86,14 @@ export default {
 				'dock-hover': {
 					'0%': { transform: 'scale(1)' },
 					'100%': { transform: 'scale(1.2)' },
+				},
+				'slide-up': {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' },
+				},
+				'progress-fill': {
+					'0%': { width: '0%' },
+					'100%': { width: '100%' },
 				}
 			},
 			animation: {
@@ -94,7 +102,9 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out',
 				'scale-in': 'scale-in 0.3s ease-out',
 				'float': 'float 6s ease-in-out infinite',
-				'dock-hover': 'dock-hover 0.2s ease-out'
+				'dock-hover': 'dock-hover 0.2s ease-out',
+				'slide-up': 'slide-up 0.5s ease-out',
+				'progress-fill': 'progress-fill 2s ease-out'
 			}
 		}
 	},
