@@ -61,59 +61,48 @@ const RainbowCursor: React.FC = () => {
       style={{
         left: `${position.x}px`,
         top: `${position.y}px`,
-        opacity: blinking ? 0.7 : 1
+        opacity: blinking ? 0.7 : 1,
+        imageRendering: 'pixelated',
+        transform: 'translate(10px, 10px)'
       }}
     >
-      <div className="cursor-box">
-        <div className="cursor-inner">
-          <span className="cursor-text">_</span>
+      <div 
+        style={{
+          width: '16px',
+          height: '24px',
+          backgroundColor: 'transparent',
+          position: 'relative',
+          transformOrigin: 'top left'
+        }}
+      >
+        <div 
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            border: '2px solid #fff',
+            boxShadow: '0 0 0 1px #000',
+            backgroundColor: '#000',
+            color: '#33ff33'
+          }}
+        >
+          <span 
+            style={{
+              fontFamily: '"Courier New", monospace',
+              fontSize: '18px',
+              fontWeight: 'bold',
+              marginTop: '-2px'
+            }}
+          >
+            _
+          </span>
         </div>
       </div>
-      <style jsx>{`
-        .retro-cursor {
-          image-rendering: pixelated;
-          transform: translate(10px, 10px);
-        }
-        
-        .cursor-box {
-          width: 16px;
-          height: 24px;
-          background-color: transparent;
-          position: relative;
-          transform-origin: top left;
-        }
-        
-        .cursor-inner {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: absolute;
-          top: 0;
-          left: 0;
-          border: 2px solid #fff;
-          box-shadow: 0 0 0 1px #000;
-          background-color: #000;
-          color: #33ff33;
-        }
-        
-        .cursor-text {
-          font-family: "Courier New", monospace;
-          font-size: 18px;
-          font-weight: bold;
-          margin-top: -2px;
-        }
-        
-        @media (prefers-color-scheme: light) {
-          .cursor-inner {
-            border-color: #000;
-            box-shadow: 0 0 0 1px #fff;
-            background-color: #fff;
-            color: #008800;
-          }
-        }
-      `}</style>
     </div>
   );
 };
