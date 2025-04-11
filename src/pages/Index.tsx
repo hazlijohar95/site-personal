@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import NavDock from '../components/NavDock';
 import ProfileSection from '../components/ProfileSection';
@@ -8,6 +7,7 @@ import ContactSection from '../components/ContactSection';
 import ThemeToggle from '../components/ThemeToggle';
 import ScrollProgressIndicator from '../components/ScrollProgressIndicator';
 import AnimatedSection from '../components/AnimatedSection';
+import RainbowCursor from '../components/RainbowCursor';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
@@ -59,6 +59,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
+      {/* Rainbow Cursor */}
+      <RainbowCursor />
+      
       {/* Scroll Progress Indicator */}
       <ScrollProgressIndicator />
       
