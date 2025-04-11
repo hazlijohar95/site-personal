@@ -146,6 +146,31 @@
     will-change: transform, opacity;
   }
 
+  .retro-cursor {
+    animation: pixelIn 0.2s steps(5) 1;
+    will-change: transform;
+  }
+
+  @keyframes pixelIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8) translate(8px, 8px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translate(10px, 10px);
+    }
+  }
+
+  @keyframes blink {
+    0%, 49% {
+      opacity: 1;
+    }
+    50%, 100% {
+      opacity: 0;
+    }
+  }
+
   @keyframes gradient-animation {
     0% {
       background-position: 0% 50%;
@@ -175,7 +200,6 @@
     text-wrap: balance;
   }
   
-  /* Mobile-specific utilities */
   @media (max-width: 768px) {
     .dock-item {
       @apply w-10 h-10;
@@ -191,14 +215,12 @@
   }
 }
 
-/* Add smooth scrolling to iOS */
 @supports (-webkit-touch-callout: none) {
   .smooth-scroll {
     -webkit-overflow-scrolling: touch;
   }
 }
 
-/* Remove tap highlight color on mobile */
 input,
 textarea,
 button,
@@ -207,7 +229,6 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* Optimize performance on mobile */
 * {
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;

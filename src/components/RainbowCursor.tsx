@@ -10,90 +10,36 @@ interface Position {
 const RainbowCursor: React.FC = () => {
   const [position, setPosition] = useState<Position>({ x: 0, y: 0, timestamp: Date.now() });
   const [isVisible, setIsVisible] = useState(false);
-  const [opacity, setOpacity] = useState(0);
+  const [blinking, setBlinking] = useState(false);
   const timerId = useRef<NodeJS.Timeout | null>(null);
-  const lastPositions = useRef<Position[]>([]);
-  const requestRef = useRef<number>();
-  
-  // Function to calculate fluid position based on mouse movement history
-  const getFluidPosition = () => {
-    if (lastPositions.current.length < 2) return position;
-    
-    // Calculate weighted average of recent positions
-    const recentPositions = lastPositions.current.slice(-5);
-    const now = Date.now();
-    
-    let totalWeight = 0;
-    let weightedX = 0;
-    let weightedY = 0;
-    
-    recentPositions.forEach((pos, index) => {
-      // More recent positions have higher weight
-      const age = now - pos.timestamp;
-      const weight = Math.max(0, 1 - age / 1000);
-      
-      totalWeight += weight;
-      weightedX += pos.x * weight;
-      weightedY += pos.y * weight;
-    });
-    
-    if (totalWeight === 0) return position;
-    
-    return {
-      x: weightedX / totalWeight,
-      y: weightedY / totalWeight,
-      timestamp: now
-    };
-  };
-  
-  // Animation loop
-  const animate = () => {
-    if (isVisible) {
-      // Get fluid position
-      const fluidPosition = getFluidPosition();
-      setPosition(fluidPosition);
-      
-      // Determine if mouse is still moving
-      const now = Date.now();
-      const lastPosition = lastPositions.current[lastPositions.current.length - 1];
-      const timeSinceLastMove = now - lastPosition.timestamp;
-      
-      // Gradually fade out when mouse stops
-      if (timeSinceLastMove > 200) {
-        setOpacity(prev => Math.max(0, prev - 0.05));
-        if (opacity <= 0) {
-          setIsVisible(false);
-        }
-      } else {
-        setOpacity(Math.min(1, opacity + 0.1));
-      }
-    }
-    
-    requestRef.current = requestAnimationFrame(animate);
-  };
+  const blinkTimerId = useRef<NodeJS.Timeout | null>(null);
   
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const newPosition = { x: e.clientX, y: e.clientY, timestamp: Date.now() };
-      
-      // Save position history for fluid motion
-      lastPositions.current = [...lastPositions.current.slice(-10), newPosition];
+      setPosition(newPosition);
       
       // Show cursor
       setIsVisible(true);
-      setOpacity(prev => Math.min(1, prev + 0.1));
       
-      // Clear existing timeout
+      // Reset blinking when moving
+      setBlinking(false);
+      
+      // Clear existing timeouts
       if (timerId.current) clearTimeout(timerId.current);
+      if (blinkTimerId.current) clearTimeout(blinkTimerId.current);
       
-      // Set new timeout to begin fading after inactivity
+      // Set timeout to start blinking after inactivity
       timerId.current = setTimeout(() => {
-        // We'll handle the actual fading in the animation loop
+        setBlinking(true);
+        
+        // Set interval for blinking effect
+        blinkTimerId.current = setInterval(() => {
+          setBlinking(prev => !prev);
+        }, 500); // Classic blink rate
+        
       }, 800);
     };
-    
-    // Start animation loop
-    requestRef.current = requestAnimationFrame(animate);
     
     // Add event listener
     document.addEventListener('mousemove', handleMouseMove);
@@ -102,36 +48,72 @@ const RainbowCursor: React.FC = () => {
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
       if (timerId.current) clearTimeout(timerId.current);
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+      if (blinkTimerId.current) clearInterval(blinkTimerId.current);
     };
-  }, [opacity, isVisible]);
+  }, []);
   
   // Don't render anything if not visible
   if (!isVisible) return null;
   
   return (
     <div
-      className="rainbow-cursor fixed pointer-events-none z-50 whitespace-nowrap"
+      className="retro-cursor fixed pointer-events-none z-50"
       style={{
-        left: `${position.x + 20}px`,
-        top: `${position.y - 10}px`,
-        transform: 'translate(0, -50%)',
-        opacity: opacity,
-        transition: 'opacity 0.3s ease-out'
+        left: `${position.x}px`,
+        top: `${position.y}px`,
+        opacity: blinking ? 0.7 : 1
       }}
     >
-      <span className="text-transparent bg-clip-text" 
-            style={{
-              backgroundImage: 'linear-gradient(to right, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3)',
-              backgroundSize: '200% auto',
-              animation: 'gradient-animation 2s linear infinite',
-              fontSize: '12px',
-              fontFamily: 'monospace',
-              fontWeight: 'bold',
-              filter: 'drop-shadow(0 0 1px rgba(255,255,255,0.5))'
-            }}>
-        &lt;decoding the future of accounting/&gt;
-      </span>
+      <div className="cursor-box">
+        <div className="cursor-inner">
+          <span className="cursor-text">_</span>
+        </div>
+      </div>
+      <style jsx>{`
+        .retro-cursor {
+          image-rendering: pixelated;
+          transform: translate(10px, 10px);
+        }
+        
+        .cursor-box {
+          width: 16px;
+          height: 24px;
+          background-color: transparent;
+          position: relative;
+          transform-origin: top left;
+        }
+        
+        .cursor-inner {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border: 2px solid #fff;
+          box-shadow: 0 0 0 1px #000;
+          background-color: #000;
+          color: #33ff33;
+        }
+        
+        .cursor-text {
+          font-family: "Courier New", monospace;
+          font-size: 18px;
+          font-weight: bold;
+          margin-top: -2px;
+        }
+        
+        @media (prefers-color-scheme: light) {
+          .cursor-inner {
+            border-color: #000;
+            box-shadow: 0 0 0 1px #fff;
+            background-color: #fff;
+            color: #008800;
+          }
+        }
+      `}</style>
     </div>
   );
 };
