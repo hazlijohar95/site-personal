@@ -57,14 +57,16 @@ export async function loadAllPosts(): Promise<PostMeta[]> {
         title: 'How I Started Cynco: A Journey into Open Accounting',
         date: '2024-04-10',
         excerpt: 'The story of how Cynco began and the principles that guide our open accounting approach.',
+        readingTime: '' // Initialize with empty string to satisfy TypeScript
       },
       {
         slug: 'scaling-open-accounting',
         title: 'Scaling Open Accounting: Lessons from Our First Year',
         date: '2024-04-15',
         excerpt: 'What we\'ve learned about scalability, integration, and building trust in the financial ecosystem.',
+        readingTime: '' // Initialize with empty string to satisfy TypeScript
       },
-    ];
+    ] as PostMeta[]; // Cast as PostMeta to ensure TypeScript recognizes it
     
     // Calculate reading time for each post
     for (const post of posts) {
@@ -73,10 +75,10 @@ export async function loadAllPosts(): Promise<PostMeta[]> {
         const rawContent = await response.text();
         const { content } = matter(rawContent);
         post.readingTime = calculateReadingTime(content);
-        allPosts.push(post as PostMeta);
+        allPosts.push(post); // TypeScript should now recognize post as PostMeta
       } catch (error) {
         console.error(`Failed to load post: ${post.slug}`, error);
-        allPosts.push(post as PostMeta);
+        allPosts.push(post);
       }
     }
     
