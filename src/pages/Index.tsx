@@ -7,6 +7,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 import { ArrowUp } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import ContentSkeleton from '@/components/common/ContentSkeleton';
+import { CommandMenu } from '@/components/CommandMenu';
 
 // Lazy load section components
 const Hero = lazy(() => import('@/features/home/components/Hero'));
@@ -53,8 +54,9 @@ const Index = () => {
   return (
     <div className={cn(
       "min-h-screen",
-      isMobile && "pb-16" // Add padding at bottom for mobile navigation
+      isMobile && "pb-16"
     )}>
+      <CommandMenu />
       <ScrollProgressIndicator />
       
       <div className="fixed top-4 right-4 z-50">

@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Georgia&family=Courier+New&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Mono:400,600&display=swap');
 
 @layer base {
   :root {
@@ -40,12 +40,15 @@
   }
 
   body {
-    @apply bg-background text-foreground font-georgia overflow-x-hidden touch-manipulation;
+    @apply bg-background text-foreground font-sans overflow-x-hidden touch-manipulation;
     line-height: 1.8;
     -webkit-tap-highlight-color: transparent;
-    max-width: 650px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 2rem 1rem;
+    background-image: 
+      radial-gradient(circle at top left, rgba(255, 255, 255, 0.15), transparent 400px),
+      radial-gradient(circle at top right, rgba(255, 255, 255, 0.15), transparent 400px);
   }
 
   body.mobile {
@@ -54,11 +57,11 @@
   }
 
   ::selection {
-    @apply bg-black/10 dark:bg-white/10;
+    @apply bg-foreground/10;
   }
 
   a {
-    @apply cursor-pointer text-black dark:text-white underline-offset-4 decoration-[0.5px] hover:underline;
+    @apply cursor-pointer text-foreground underline-offset-4 decoration-[0.5px] hover:underline;
   }
 
   -webkit-overflow-scrolling: touch;
@@ -131,6 +134,18 @@
   
   .pg-timestamp {
     @apply text-sm text-gray-500 dark:text-gray-400;
+  }
+
+  .glass-card {
+    @apply bg-background/50 backdrop-blur-lg border border-border/50 shadow-sm;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent;
+  }
+  
+  .hover-card {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98];
   }
 }
 
