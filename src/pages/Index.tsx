@@ -1,58 +1,32 @@
 
-import React, { useState, useEffect } from 'react';
-import NavDock from '../components/NavDock';
-import ProfileSection from '../components/ProfileSection';
-import ExperienceSection from '../components/ExperienceSection';
-import MediaSection from '../components/MediaSection';
-import ContactSection from '../components/ContactSection';
-import ThemeToggle from '../components/ThemeToggle';
-import ScrollProgressIndicator from '../components/ScrollProgressIndicator';
+import React, { Suspense, lazy } from 'react';
+import Navigation from '@/components/layout/Navigation';
+import ThemeToggle from '@/components/layout/ThemeToggle';
+import ScrollProgressIndicator from '@/components/ScrollProgressIndicator';
+import { useSectionTracking } from '@/hooks/use-section-tracking';
 import { useIsMobile } from '@/hooks/use-mobile';
 
+// Lazy load section components
+const Hero = lazy(() => import('@/features/home/components/Hero'));
+const ProfileSection = lazy(() => import('@/features/profile/components/index'));
+const ExperienceSection = lazy(() => import('@/features/experience/components/index'));
+const MediaSection = lazy(() => import('@/features/media/components/index'));
+const ContactSection = lazy(() => import('@/features/contact/components/index'));
+
+// Loading fallback
+const SectionLoading = () => (
+  <div className="min-h-[30vh] flex items-center justify-center">
+    <div className="animate-pulse text-gray-400">Loading...</div>
+  </div>
+);
+
 const Index = () => {
-  const [activeSection, setActiveSection] = useState('home');
   const isMobile = useIsMobile();
+  const sections = ['home', 'profile', 'experience', 'media', 'contact'];
+  const { activeSection, sectionRefs, scrollToSection } = useSectionTracking({ sections });
   
-  const sectionRefs = {
-    home: React.useRef<HTMLDivElement>(null),
-    profile: React.useRef<HTMLDivElement>(null),
-    experience: React.useRef<HTMLDivElement>(null),
-    media: React.useRef<HTMLDivElement>(null),
-    contact: React.useRef<HTMLDivElement>(null),
-  };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 3;
-      
-      for (const section in sectionRefs) {
-        const ref = sectionRefs[section as keyof typeof sectionRefs];
-        if (ref.current) {
-          const { offsetTop, offsetHeight } = ref.current;
-          
-          if (
-            scrollPosition >= offsetTop && 
-            scrollPosition < offsetTop + offsetHeight
-          ) {
-            setActiveSection(section);
-            break;
-          }
-        }
-      }
-    };
-    
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const handleNavigation = (section: string) => {
-    const ref = sectionRefs[section as keyof typeof sectionRefs];
-    if (ref.current) {
-      window.scrollTo({
-        top: ref.current.offsetTop,
-        behavior: isMobile ? 'auto' : 'smooth',
-      });
-    }
+    scrollToSection(section);
   };
 
   return (
@@ -63,39 +37,31 @@ const Index = () => {
         <ThemeToggle />
       </div>
       
-      <NavDock 
+      <Navigation 
         onNavigate={handleNavigation} 
         activeSection={activeSection} 
       />
       
       <div className="pg-container">
-        {/* Home Section */}
-        <div ref={sectionRefs.home} className="min-h-[60vh] flex flex-col justify-center">
-          <div>
-            <h1 className="text-3xl mb-4 font-georgia">
-              Hazli Johar
-            </h1>
-            <p className="font-mono text-sm">
-              &lt;Decoding The Future of Accounting&gt;
-            </p>
-          </div>
-        </div>
+        <Suspense fallback={<SectionLoading />}>
+          <Hero ref={sectionRefs.home} />
+        </Suspense>
 
-        <div ref={sectionRefs.profile}>
-          <ProfileSection />
-        </div>
+        <Suspense fallback={<SectionLoading />}>
+          <ProfileSection ref={sectionRefs.profile} />
+        </Suspense>
         
-        <div ref={sectionRefs.experience}>
-          <ExperienceSection />
-        </div>
+        <Suspense fallback={<SectionLoading />}>
+          <ExperienceSection ref={sectionRefs.experience} />
+        </Suspense>
         
-        <div ref={sectionRefs.media}>
-          <MediaSection />
-        </div>
+        <Suspense fallback={<SectionLoading />}>
+          <MediaSection ref={sectionRefs.media} />
+        </Suspense>
         
-        <div ref={sectionRefs.contact}>
-          <ContactSection />
-        </div>
+        <Suspense fallback={<SectionLoading />}>
+          <ContactSection ref={sectionRefs.contact} />
+        </Suspense>
       </div>
     </div>
   );
