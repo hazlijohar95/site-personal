@@ -23,6 +23,12 @@ This document outlines the technologies, libraries, and infrastructure used in H
 - **Zod**: TypeScript-first schema validation
 - **Supabase SDK**: Client for Supabase backend services
 
+### Blog System
+- **MDX**: Extended markdown format that allows JSX in markdown
+- **gray-matter**: Parse front-matter from markdown
+- **@tailwindcss/typography**: Provides styling for rendered markdown
+- **rehype-highlight**: Code syntax highlighting for code blocks
+
 ### UI/UX Enhancements
 - **Sonner**: Toast notifications
 - **CMDK**: Command menu interface
