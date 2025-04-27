@@ -21,6 +21,7 @@ export default {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
         mono: ["SF Mono", "Courier New", "monospace"],
+        georgia: ["Georgia", "serif"],
       },
       colors: {
         border: 'hsl(var(--border))',
