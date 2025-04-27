@@ -19,9 +19,25 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["SF Mono", "Courier New", "monospace"],
-        georgia: ["Georgia", "serif"],
+        sans: [
+          "Inter var",
+          "Inter",
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "Noto Sans",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          "Noto Color Emoji"
+        ],
+        mono: ["SF Mono", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
+        georgia: ["Georgia", "Cambria", "Times New Roman", "Times", "serif"],
       },
       colors: {
         border: 'hsl(var(--border))',

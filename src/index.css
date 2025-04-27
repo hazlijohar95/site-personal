@@ -6,7 +6,13 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    font-family: "Inter", sans-serif;
+    background-color: #fcfcfc;
+    color-scheme: light;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    
+    --background: 0 0% 99%;
     --foreground: 0 0% 0%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 0%;
@@ -17,16 +23,29 @@
     --border: 0 0% 90%;
   }
 
-  .dark {
-    --background: 0 0% 3%;
+  :root.dark {
+    background-color: #1C1C1C;
+    color-scheme: dark;
+    
+    --background: 0 0% 11%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 3%;
+    --card: 0 0% 11%;
     --card-foreground: 0 0% 98%;
     --muted: 0 0% 14%;
     --muted-foreground: 0 0% 63%;
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 9%;
     --border: 0 0% 20%;
+  }
+
+  :root.pause-transitions * {
+    transition-duration: 0ms !important;
+  }
+
+  @supports (font-variation-settings: normal) {
+    :root {
+      font-family: "Inter var", sans-serif;
+    }
   }
 
   * {
@@ -42,13 +61,9 @@
   body {
     @apply bg-background text-foreground font-sans overflow-x-hidden touch-manipulation;
     line-height: 1.8;
-    -webkit-tap-highlight-color: transparent;
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem 1rem;
-    background-image: 
-      radial-gradient(circle at top left, rgba(255, 255, 255, 0.15), transparent 400px),
-      radial-gradient(circle at top right, rgba(255, 255, 255, 0.15), transparent 400px);
   }
 
   body.mobile {
@@ -63,8 +78,6 @@
   a {
     @apply cursor-pointer text-foreground underline-offset-4 decoration-[0.5px] hover:underline;
   }
-
-  -webkit-overflow-scrolling: touch;
 }
 
 @layer components {
