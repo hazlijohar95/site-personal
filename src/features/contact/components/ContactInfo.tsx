@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Mail, Calendar } from 'lucide-react';
-import SocialLinks from '@/components/SocialLinks';
 
 const ContactInfo: React.FC = () => {
   return (
@@ -27,11 +26,6 @@ const ContactInfo: React.FC = () => {
             Schedule a meeting
           </button>
         </div>
-      </div>
-      
-      <div className="mt-8">
-        <h3 className="text-sm font-mono mb-3">CONNECT WITH ME</h3>
-        <SocialLinks />
       </div>
     </div>
   );
