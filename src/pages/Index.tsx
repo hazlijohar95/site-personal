@@ -1,10 +1,11 @@
 
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect, useState } from 'react';
 import Navigation from '@/components/layout/Navigation';
 import ThemeToggle from '@/components/layout/ThemeToggle';
 import ScrollProgressIndicator from '@/components/ScrollProgressIndicator';
 import { useSectionTracking } from '@/hooks/use-section-tracking';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { ArrowUp } from 'lucide-react';
 
 // Lazy load section components
 const Hero = lazy(() => import('@/features/home/components/Hero'));
@@ -23,24 +24,48 @@ const SectionLoading = () => (
 const Index = () => {
   const isMobile = useIsMobile();
   const sections = ['home', 'profile', 'experience', 'media', 'contact'];
-  const { activeSection, sectionRefs, scrollToSection } = useSectionTracking({ sections });
+  const { activeSection, sectionRefs, scrollToSection } = useSectionTracking({ 
+    sections,
+    offset: isMobile ? 2 : 3 // Adjust offset for mobile
+  });
+  
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  // Show back-to-top button after scrolling
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > window.innerHeight);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   const handleNavigation = (section: string) => {
     scrollToSection(section);
   };
+  
+  const handleBackToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
-    <div className="min-h-screen">
+    <div className={cn(
+      "min-h-screen",
+      isMobile && "pb-16" // Add padding at bottom for mobile navigation
+    )}>
       <ScrollProgressIndicator />
       
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
       </div>
       
-      <Navigation 
-        onNavigate={handleNavigation} 
-        activeSection={activeSection} 
-      />
+      {!isMobile && (
+        <Navigation 
+          onNavigate={handleNavigation} 
+          activeSection={activeSection} 
+        />
+      )}
       
       <div className="pg-container">
         <Suspense fallback={<SectionLoading />}>
@@ -63,6 +88,25 @@ const Index = () => {
           <ContactSection ref={sectionRefs.contact} />
         </Suspense>
       </div>
+      
+      {/* Back to Top Button - Mobile only */}
+      {isMobile && showBackToTop && (
+        <button
+          onClick={handleBackToTop}
+          className="fixed bottom-20 right-4 z-40 p-2 rounded-full bg-background/80 backdrop-blur-md border border-border shadow-md"
+          aria-label="Back to top"
+        >
+          <ArrowUp size={18} />
+        </button>
+      )}
+      
+      {/* Mobile Navigation */}
+      {isMobile && (
+        <Navigation 
+          onNavigate={handleNavigation} 
+          activeSection={activeSection}
+        />
+      )}
     </div>
   );
 };
