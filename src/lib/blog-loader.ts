@@ -1,6 +1,6 @@
 
 import matter from 'gray-matter';
-import { allPosts, calculateReadingTime, PostMeta } from './blog';
+import { allPosts, calculateReadingTime, PostMeta, sortPostsByDate } from './blog';
 
 // This function would be used in a real app with a server or build process
 // For our purposes, we're simulating it with imports
@@ -39,6 +39,9 @@ export async function loadPost(slug: string): Promise<{
   }
 }
 
+// Export the sortPostsByDate function to be used in Blog.tsx
+export { sortPostsByDate };
+
 // In a build-time static site, we'd build this list at build time
 // For our demo, we'll manually populate this with our two sample posts
 export async function loadAllPosts(): Promise<PostMeta[]> {
@@ -65,11 +68,16 @@ export async function loadAllPosts(): Promise<PostMeta[]> {
     
     // Calculate reading time for each post
     for (const post of posts) {
-      const response = await fetch(`/posts/${post.slug}.mdx`);
-      const rawContent = await response.text();
-      const { content } = matter(rawContent);
-      post.readingTime = calculateReadingTime(content);
-      allPosts.push(post);
+      try {
+        const response = await fetch(`/posts/${post.slug}.mdx`);
+        const rawContent = await response.text();
+        const { content } = matter(rawContent);
+        post.readingTime = calculateReadingTime(content);
+        allPosts.push(post as PostMeta);
+      } catch (error) {
+        console.error(`Failed to load post: ${post.slug}`, error);
+        allPosts.push(post as PostMeta);
+      }
     }
     
     return allPosts;
