@@ -7,31 +7,26 @@ const ProfileContent: React.FC = () => {
       <p className="font-bold">"Currently on a mission @ Cynco."</p>
       
       <p>
-        I am the Co-Founder and CEO of Cynco, an AI startup I co-founded to disrupt and rethink how accounting technology is built. Before our launch, we pitched our idea at the Digital Adoption Awards by The Malaysian Institute of Accountants, where we received a recognition award. We were also named one of the top three companies—out of 30 startups—at PACE Bootcamp by Artem Ventures and ranked in the top five at the MyStartup Pre-Accelerator Program by Cradle Fund in partnership with WTF Accelerator.
+        I'm the Co-Founder and CEO of Cynco, an AI startup rethinking how accounting technology is built.
+        Before our launch, we pitched at the Digital Adoption Awards by the Malaysian Institute of Accountants and received a recognition award. We were named one of the top three companies at PACE Bootcamp by Artem Ventures and ranked in the top five at the MyStartup Pre-Accelerator by Cradle Fund and WTF Accelerator.
       </p>
       
       <p>
-        Before founding Cynco, I ran a chartered accounting firm advising multinational companies. I also worked as an auditor and served as a Fractional CFO for several multinational companies across the APAC region.
+        Before Cynco, I ran a chartered accounting firm advising multinational companies, worked as an auditor, and served as a Fractional CFO across the APAC region.
+        In total, I've worked with over 500 companies across industries — seeing firsthand how accounting systems break and what scaling companies really need.
       </p>
       
       <p>
-        I consider myself an accountant, consultant, and vibe coder who turned into a startup founder determined to make an impact.
+        Outside of accounting, I co-founded and co-invested in F&B, retail, fashion, and real estate businesses alongside other syndicates.
       </p>
       
       <p>
-        During my time as an auditor, I engaged with over 500 companies from various industries, learning firsthand how they manage their accounting processes. Transitioning into consulting, I listened to companies' daily challenges and have assisted investors with foreign direct investments over the past seven years in Malaysia, Singapore, Vietnam, and Indonesia.
+        I build because I love it. Over the years, I picked up design, coding, and sales to build faster and better.
+        I'm an accountant, consultant, and occasional vibe coder who turned into a founder determined to make an impact.
       </p>
       
       <p>
-        At the same time, I co-founded and co-invested, alongside other syndicates, in companies across F&B, retail, fashion, and real estate.
-      </p>
-      
-      <p>
-        I love building things. That's why I learned design, coding, and even sales.
-      </p>
-      
-      <p>
-        Specialties: Financial Reporting, Company Restructuring, Design, Entrepreneurship, Bootstrapping, Scaling, and Sales & Marketing.
+        Specialties: Financial Reporting, Company Restructuring, Design, Entrepreneurship, Bootstrapping, Scaling, Sales & Marketing.
       </p>
     </div>
   );

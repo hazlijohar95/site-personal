@@ -6,6 +6,7 @@ import { useSectionTracking } from '@/hooks/use-section-tracking';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { ArrowUp } from 'lucide-react';
 import { cn } from "@/lib/utils";
+import ContentSkeleton from '@/components/common/ContentSkeleton';
 
 // Lazy load section components
 const Hero = lazy(() => import('@/features/home/components/Hero'));
@@ -16,8 +17,8 @@ const ContactSection = lazy(() => import('@/features/contact/components/index'))
 
 // Loading fallback
 const SectionLoading = () => (
-  <div className="min-h-[30vh] flex items-center justify-center">
-    <div className="animate-pulse text-gray-400">Loading...</div>
+  <div className="min-h-[30vh] animate-fade-in">
+    <ContentSkeleton />
   </div>
 );
 

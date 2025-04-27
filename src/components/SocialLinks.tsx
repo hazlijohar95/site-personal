@@ -3,6 +3,7 @@ import React from 'react';
 
 const SocialLinks: React.FC = () => {
   const links = [
+    { label: "GitHub", url: "https://github.com/hazlijohar95" },
     { label: "Blog", url: "https://hazli.bearblog.dev" },
     { label: "Twitter", url: "https://x.com/hazlijohar" },
     { label: "Instagram", url: "https://www.instagram.com/hazlijohar/" },
