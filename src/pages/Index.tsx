@@ -1,4 +1,3 @@
-
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import Navigation from '@/components/layout/Navigation';
 import ThemeToggle from '@/components/layout/ThemeToggle';
@@ -6,6 +5,7 @@ import ScrollProgressIndicator from '@/components/ScrollProgressIndicator';
 import { useSectionTracking } from '@/hooks/use-section-tracking';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { ArrowUp } from 'lucide-react';
+import { cn } from "@/lib/utils";
 
 // Lazy load section components
 const Hero = lazy(() => import('@/features/home/components/Hero'));
