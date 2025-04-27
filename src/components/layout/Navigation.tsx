@@ -15,11 +15,11 @@ const Navigation: React.FC<NavigationProps> = ({ onNavigate, activeSection, clas
   const isMobile = useIsMobile();
   
   const sections = [
-    { id: 'home', label: '§ Home' },
-    { id: 'profile', label: '§ About' },
-    { id: 'experience', label: '§ Experience' },
-    { id: 'media', label: '§ Media' },
-    { id: 'contact', label: '§ Contact' }
+    { id: 'home', label: 'Home' },
+    { id: 'profile', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'media', label: 'Media' },
+    { id: 'contact', label: 'Contact' }
   ];
   
   // Mobile Navigation

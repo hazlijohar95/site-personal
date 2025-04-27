@@ -8,11 +8,11 @@ interface NavDockProps {
 
 const NavDock: React.FC<NavDockProps> = ({ onNavigate, activeSection }) => {
   const sections = [
-    { id: 'home', label: '§ Home' },
-    { id: 'profile', label: '§ About' },
-    { id: 'experience', label: '§ Experience' },
-    { id: 'media', label: '§ Media' },
-    { id: 'contact', label: '§ Contact' }
+    { id: 'home', label: 'Home' },
+    { id: 'profile', label: 'About' },
+    { id: 'experience', label: 'Experience' },
+    { id: 'media', label: 'Media' },
+    { id: 'contact', label: 'Contact' }
   ];
   
   return (
