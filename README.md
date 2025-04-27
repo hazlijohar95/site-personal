@@ -1,73 +1,140 @@
-# Welcome to your Lovable project
 
-## Project info
+# Hazli Johar - Personal Website
 
-**URL**: https://lovable.dev/projects/74b250db-bb29-4909-bd27-8374c4249238
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-## How can I edit this code?
+A minimalist, responsive personal website and portfolio for Hazli Johar, built with React, TypeScript, and Tailwind CSS.
 
-There are several ways of editing your application.
+![Website Preview](https://hazli-johar.com/preview.png)
 
-**Use Lovable**
+## 🚀 Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/74b250db-bb29-4909-bd27-8374c4249238) and start prompting.
+- Responsive design that works on all devices
+- Dark/light mode toggle
+- Animated section transitions
+- Optimized loading experience
+- Media showcase section
+- Contact form with calendar integration
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📋 Table of Contents
 
-**Use your preferred IDE**
+- [Demo](#demo)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Development](#development)
+  - [Building for Production](#building-for-production)
+- [Customization](#customization)
+  - [Personal Information](#personal-information)
+  - [Theme Colors](#theme-colors)
+  - [Adding New Sections](#adding-new-sections)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🌐 Demo
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Live demo: [https://hazli-johar.com](https://hazli-johar.com)
 
-Follow these steps:
+## 🏁 Getting Started
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Prerequisites
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+- Node.js (v18 or higher)
+- npm or yarn
 
-# Step 3: Install the necessary dependencies.
-npm i
+### Installation
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+```bash
+# Clone the repository
+git clone https://github.com/hazlijohar95/personal-website.git
+cd personal-website
+
+# Install dependencies
+npm install
+# or
+yarn install
 ```
 
-**Edit a file directly in GitHub**
+### Development
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+# Start development server
+npm run dev
+# or
+yarn dev
+```
 
-**Use GitHub Codespaces**
+The development server will start on [http://localhost:8080](http://localhost:8080).
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Building for Production
 
-## What technologies are used for this project?
+```bash
+# Build for production
+npm run build
+# or
+yarn build
+```
 
-This project is built with:
+## ✏️ Customization
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Personal Information
 
-## How can I deploy this project?
+Edit the following files to customize personal information:
 
-Simply open [Lovable](https://lovable.dev/projects/74b250db-bb29-4909-bd27-8374c4249238) and click on Share -> Publish.
+- `src/features/profile/components/ProfileContent.tsx` - Bio information
+- `src/features/profile/components/ProfileHeader.tsx` - Name, location, and title
+- `src/components/SocialLinks.tsx` - Social media links
+- `src/features/experience/data/experiences.ts` - Work experience
+- `src/features/media/data/mediaItems.ts` - Media appearances
 
-## Can I connect a custom domain to my Lovable project?
+### Theme Colors
 
-Yes it is!
+Theme colors can be customized in `tailwind.config.ts` under the `theme.extend.colors` section.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Adding New Sections
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1. Create a new directory in `src/features/your-section-name/`
+2. Add component files within a `components` subdirectory
+3. If needed, add data files within a `data` subdirectory
+4. Import your new section in `src/pages/Index.tsx`
+
+## 📁 Project Structure
+
+```
+/
+├── public/              # Static assets
+├── src/
+│   ├── components/      # Shared UI components
+│   ├── features/        # Feature modules
+│   │   ├── home/        # Home feature components
+│   │   ├── profile/     # Profile feature components
+│   │   ├── experience/  # Experience feature components
+│   │   ├── media/       # Media feature components
+│   │   └── contact/     # Contact feature components
+│   ├── hooks/           # Custom React hooks
+│   ├── lib/             # Utility functions
+│   ├── pages/           # Page components
+│   └── App.tsx          # Main App component
+├── .gitignore
+├── index.html           # HTML template
+├── package.json         # Project dependencies
+├── tailwind.config.ts   # Tailwind CSS configuration
+├── tsconfig.json        # TypeScript configuration
+└── vite.config.ts       # Vite configuration
+```
+
+## 🤝 Contributing
+
+Contributions are welcome! Please check out our [Contributing Guidelines](CONTRIBUTING.md) for more details.
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👏 Acknowledgments
+
+- Icons from [Lucide](https://lucide.dev/)
+- UI components from [shadcn/ui](https://ui.shadcn.com/)
+- Built with [React](https://reactjs.org/), [Vite](https://vitejs.dev/), and [Tailwind CSS](https://tailwindcss.com/)
