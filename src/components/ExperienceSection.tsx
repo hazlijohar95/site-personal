@@ -1,7 +1,5 @@
 
 import React from 'react';
-import MacWindow from './MacWindow';
-import { Calendar } from 'lucide-react';
 
 const experiences = [
   {
@@ -32,50 +30,28 @@ const experiences = [
 
 const ExperienceSection: React.FC = () => {
   return (
-    <section id="experience" className="min-h-screen flex flex-col items-center justify-center p-6">
-      <div className="max-w-4xl w-full">
-        <MacWindow title="Experience.json">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {experiences.map((exp, index) => (
-              <ExperienceCard key={index} experience={exp} />
-            ))}
+    <section id="experience" className="pg-section">
+      <h2 className="pg-heading">Experience</h2>
+      
+      <div className="space-y-6">
+        {experiences.map((exp, index) => (
+          <div key={index} className="border-b border-gray-200 dark:border-gray-800 pb-4 last:border-0">
+            <div className="flex justify-between items-baseline mb-1">
+              <h3 className="font-bold">{exp.role}</h3>
+              <span className="pg-timestamp">{exp.period}</span>
+            </div>
+            <p className="text-gray-600 dark:text-gray-400 mb-2">{exp.company}</p>
+            
+            {exp.isActive && (
+              <div className="flex items-center gap-1.5">
+                <span className="inline-block w-2 h-2 bg-black dark:bg-white rounded-full"></span>
+                <span className="text-xs">Active</span>
+              </div>
+            )}
           </div>
-        </MacWindow>
+        ))}
       </div>
     </section>
-  );
-};
-
-interface ExperienceCardProps {
-  experience: {
-    role: string;
-    company: string;
-    period: string;
-    isActive: boolean;
-  };
-}
-
-const ExperienceCard: React.FC<ExperienceCardProps> = ({ experience }) => {
-  return (
-    <div className="glass-panel p-6 hover-lift">
-      <div className="flex justify-between items-start mb-4">
-        <div className="flex-1">
-          <h3 className="text-lg font-semibold dark:text-white">{experience.role}</h3>
-          <p className="text-gray-600 dark:text-gray-300">{experience.company}</p>
-        </div>
-        <div className="flex items-center gap-1 bg-gray-100 dark:bg-slate-700 px-3 py-1 rounded-full text-xs text-gray-700 dark:text-gray-200">
-          <Calendar size={12} />
-          <span>{experience.period}</span>
-        </div>
-      </div>
-      
-      {experience.isActive && (
-        <div className="flex items-center gap-1.5">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-          <span className="text-xs text-green-600 dark:text-green-400 font-medium">Active</span>
-        </div>
-      )}
-    </div>
   );
 };
 

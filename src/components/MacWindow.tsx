@@ -12,20 +12,14 @@ const MacWindow: React.FC<MacWindowProps> = ({ title, children, className = '' }
   const isMobile = useIsMobile();
   
   return (
-    <div className={`macos-window ${isMobile ? 'mobile-window' : ''} ${className}`}>
-      <div className="macos-window-header">
-        <div className="window-action window-close" />
-        <div className="window-action window-minimize" />
-        <div className="window-action window-maximize" />
-      </div>
-      
+    <div className={`pg-section ${className}`}>
       {title && (
-        <div className="text-center text-sm font-medium text-gray-500 dark:text-gray-300 pt-2 pb-4">
+        <h3 className="text-lg font-mono mb-4 border-b border-gray-200 dark:border-gray-800 pb-2">
           {title}
-        </div>
+        </h3>
       )}
       
-      <div className={`${isMobile ? 'pt-6' : 'pt-8'}`}>
+      <div className="font-georgia">
         {children}
       </div>
     </div>

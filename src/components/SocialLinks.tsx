@@ -1,46 +1,29 @@
 
 import React from 'react';
-import { Twitter, Instagram, Linkedin, Globe } from 'lucide-react';
 
 const SocialLinks: React.FC = () => {
+  const links = [
+    { label: "Blog", url: "https://hazli.bearblog.dev" },
+    { label: "Twitter", url: "https://x.com/hazlijohar" },
+    { label: "Instagram", url: "https://www.instagram.com/hazlijohar/" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/hazli-johar/" }
+  ];
+
   return (
-    <div className="flex items-center gap-4">
-      <a 
-        href="https://hazli.bearblog.dev" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="text-gray-700 hover:text-green-600 transition-colors duration-300 dark:text-gray-100 dark:hover:text-green-400"
-        aria-label="Blog"
-      >
-        <Globe size={20} />
-      </a>
-      <a 
-        href="https://x.com/hazlijohar" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="text-gray-700 hover:text-blue-500 transition-colors duration-300 dark:text-gray-100 dark:hover:text-blue-300"
-        aria-label="Twitter"
-      >
-        <Twitter size={20} />
-      </a>
-      <a 
-        href="https://www.instagram.com/hazlijohar/" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="text-gray-700 hover:text-pink-500 transition-colors duration-300 dark:text-gray-100 dark:hover:text-pink-300"
-        aria-label="Instagram"
-      >
-        <Instagram size={20} />
-      </a>
-      <a 
-        href="https://www.linkedin.com/in/hazli-johar/" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="text-gray-700 hover:text-blue-700 transition-colors duration-300 dark:text-gray-100 dark:hover:text-blue-300"
-        aria-label="LinkedIn"
-      >
-        <Linkedin size={20} />
-      </a>
+    <div className="font-mono text-sm">
+      {links.map((link, index) => (
+        <React.Fragment key={link.url}>
+          <a 
+            href={link.url} 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="hover:underline"
+          >
+            {link.label}
+          </a>
+          {index < links.length - 1 && <span className="mx-2">|</span>}
+        </React.Fragment>
+      ))}
     </div>
   );
 };
