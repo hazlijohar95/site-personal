@@ -27,11 +27,7 @@ const Hero = React.forwardRef<HTMLDivElement, HeroProps>(
           <div className="max-w-xl">
             <Command className="rounded-lg border shadow-md">
               <p className="p-4 text-sm text-muted-foreground">
-                Press{" "}
-                <kbd className="pointer-events-none ml-1 mr-1 inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100">
-                  <span className="text-xs">⌘</span>J
-                </kbd>{" "}
-                to start exploring
+                Press or Tap to read
               </p>
             </Command>
           </div>

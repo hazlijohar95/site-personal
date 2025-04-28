@@ -3,46 +3,77 @@
 
 ## Our Pledge
 
-We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone, regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
-
-We pledge to act and interact in ways that contribute to an open, welcoming, diverse, inclusive, and healthy community.
+We are committed to creating an inclusive, safe, and professional environment for everyone, regardless of age, body size, disability, ethnicity, sex characteristics, gender identity and expression, level of experience, education, socio-economic status, nationality, personal appearance, race, religion, or sexual identity and orientation.
 
 ## Our Standards
 
-Examples of behavior that contributes to a positive environment:
+### Positive Behavior Examples:
+- Using welcoming and inclusive language
+- Respecting differing viewpoints and experiences
+- Accepting constructive feedback gracefully
+- Being empathetic to other community members
+- Focusing on what's best for the community
+- Professional and ethical conduct in all interactions
 
-* Demonstrating empathy and kindness toward other people
-* Being respectful of differing opinions, viewpoints, and experiences
-* Giving and gracefully accepting constructive feedback
-* Accepting responsibility and apologizing to those affected by our mistakes, and learning from the experience
-* Focusing on what is best not just for us as individuals, but for the overall community
+### Unacceptable Behavior:
+- Harassment or discriminatory behavior
+- Hate speech or harmful language
+- Personal or political attacks
+- Publishing others' private information
+- Inappropriate imagery or content
+- Any form of unprofessional conduct
 
-Examples of unacceptable behavior:
+## Reporting Process
 
-* The use of sexualized language or imagery, and sexual attention or advances of any kind
-* Trolling, insulting or derogatory comments, and personal or political attacks
-* Public or private harassment
-* Publishing others' private information, such as a physical or email address, without their explicit permission
-* Other conduct which could reasonably be considered inappropriate in a professional setting
+1. **Contact Information**
+   - Email: conduct@hazli-johar.com
+   - Response Time: Within 24 hours
 
-## Enforcement Responsibilities
+2. **Report Contents**
+   - Date and time of incident
+   - Description of behavior
+   - Supporting evidence (if available)
+   - Your contact information
 
-Project maintainers are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate and fair corrective action in response to any behavior that they deem inappropriate, threatening, offensive, or harmful.
+3. **Handling Process**
+   - Initial acknowledgment: Within 24 hours
+   - Investigation period: 1-7 days
+   - Resolution communication
+   - Appeal process if needed
 
-Project maintainers have the right and responsibility to remove, edit, or reject comments, commits, code, issues, and other contributions that are not aligned to this Code of Conduct, and will communicate reasons for moderation decisions when appropriate.
+## Enforcement Guidelines
+
+### 1. Correction
+- **Violation**: First-time minor violations
+- **Action**: Private warning with explanation
+
+### 2. Warning
+- **Violation**: Repeated minor violations
+- **Action**: Public warning and behavior monitoring
+
+### 3. Temporary Ban
+- **Violation**: Serious violations
+- **Action**: Temporary ban from community interaction
+
+### 4. Permanent Ban
+- **Violation**: Sustained inappropriate behavior
+- **Action**: Permanent removal from community
+
+## Privacy Protection
+
+- All reports are confidential
+- Identity protection for reporters
+- Secure handling of sensitive information
+- Limited access to report details
 
 ## Scope
 
-This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the community in public spaces. Examples of representing our community include using an official e-mail address, posting via an official social media account, or acting as an appointed representative at an online or offline event.
-
-## Enforcement
-
-Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the project maintainers responsible for enforcement at [contact@hazli-johar.com]. All complaints will be reviewed and investigated promptly and fairly.
-
-All project maintainers are obligated to respect the privacy and security of the reporter of any incident.
+This Code of Conduct applies to:
+- All community spaces
+- Public and private communications
+- Online and offline events
+- Official social media presence
 
 ## Attribution
 
-This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/),
-version 2.1, available at
-[https://www.contributor-covenant.org/version/2/1/code_of_conduct.html](https://www.contributor-covenant.org/version/2/1/code_of_conduct.html).
+This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org/version/2/1/code_of_conduct.html).
