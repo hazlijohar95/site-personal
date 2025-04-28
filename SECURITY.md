@@ -12,7 +12,7 @@
 We take security seriously. If you discover a security vulnerability, please follow these steps:
 
 1. **DO NOT** create a public GitHub issue
-2. Email security@hazli-johar.com with details
+2. Email work@hazli.wtf with details
 3. Expect initial response within 48 hours
 4. Allow time for patch development
 5. Security team will handle disclosure
@@ -83,7 +83,7 @@ We take security seriously. If you discover a security vulnerability, please fol
 ## Contact
 
 For security concerns or questions:
-- Email: security@hazli-johar.com
+- Email: work@hazli.wtf
 - Response time: 24-48 hours
 - Emergency contact available for critical issues
 
