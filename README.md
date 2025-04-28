@@ -1,13 +1,11 @@
 
-# Hazli Johar - Personal Website
+# Personal Site/Portfolio
 
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-A minimalist, responsive personal website and portfolio for Hazli Johar, built with React, TypeScript, and Tailwind CSS.
+A minimalist, responsive personal website and portfolio built with React, TypeScript, and Tailwind CSS.
 
-![Website Preview](https://hazli-johar.com/preview.png)
-
-## 🚀 Features
+## Features
 
 - Responsive design that works on all devices
 - Dark/light mode toggle
@@ -32,10 +30,6 @@ A minimalist, responsive personal website and portfolio for Hazli Johar, built w
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
-
-## 🌐 Demo
-
-Live demo: [https://hazli-johar.com](https://hazli-johar.com)
 
 ## 🏁 Getting Started
 
