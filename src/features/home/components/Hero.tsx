@@ -2,9 +2,7 @@
 import React from 'react';
 import SectionContainer from '@/components/common/SectionContainer';
 import { cn } from "@/lib/utils";
-import { ChevronRight, Headphones, HeadphoneOff } from 'lucide-react';
-import { Command } from '@/components/ui/command';
-import { useTextToSpeech } from '@/hooks/use-text-to-speech';
+import { ChevronRight } from 'lucide-react';
 
 interface HeroProps {
   ref?: React.RefObject<HTMLDivElement>;
@@ -12,13 +10,6 @@ interface HeroProps {
 
 const Hero = React.forwardRef<HTMLDivElement, HeroProps>(
   (props, ref) => {
-    const { speak, isSpeaking } = useTextToSpeech();
-
-    const handleReadClick = () => {
-      const textToRead = "Hazli Johar. Decoding The Future of Accounting";
-      speak(textToRead);
-    };
-
     return (
       <SectionContainer ref={ref} className="min-h-[90vh] flex flex-col justify-center relative">
         <div className="relative z-10">
@@ -30,27 +21,6 @@ const Hero = React.forwardRef<HTMLDivElement, HeroProps>(
               <ChevronRight size={16} />
               <p>Decoding The Future of Accounting</p>
             </div>
-          </div>
-          
-          <div className="max-w-xl">
-            <Command className="rounded-lg border shadow-md">
-              <button
-                onClick={handleReadClick}
-                className="w-full p-4 text-sm text-muted-foreground hover:bg-accent flex items-center justify-center gap-2"
-              >
-                {isSpeaking ? (
-                  <>
-                    <HeadphoneOff size={16} />
-                    Stop Reading
-                  </>
-                ) : (
-                  <>
-                    <Headphones size={16} />
-                    Press or Tap to read
-                  </>
-                )}
-              </button>
-            </Command>
           </div>
         </div>
         
