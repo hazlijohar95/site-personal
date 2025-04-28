@@ -1,6 +1,6 @@
 
 import matter from 'gray-matter';
-import { allPosts, calculateReadingTime, PostMeta, sortPostsByDate } from './blog';
+import { allPosts, calculateReadingTime, formatBlogDate, PostMeta, sortPostsByDate } from './blog';
 
 // This function would be used in a real app with a server or build process
 // For our purposes, we're simulating it with imports
@@ -30,6 +30,7 @@ export async function loadPost(slug: string): Promise<{
       date: data.date,
       excerpt: data.excerpt,
       readingTime: calculateReadingTime(content),
+      tags: data.tags || [],
     };
     
     return { meta, content, Component };
@@ -40,12 +41,13 @@ export async function loadPost(slug: string): Promise<{
 }
 
 // Export the sortPostsByDate function to be used in Blog.tsx
-export { sortPostsByDate };
+export { sortPostsByDate, formatBlogDate };
 
 // In a build-time static site, we'd build this list at build time
 // For our demo, we'll manually populate this with our two sample posts
 export async function loadAllPosts(): Promise<PostMeta[]> {
   if (allPosts.length > 0) {
+    // Return cached posts if already loaded
     return allPosts;
   }
   
@@ -57,6 +59,7 @@ export async function loadAllPosts(): Promise<PostMeta[]> {
         title: 'How I Started Cynco: A Journey into Open Accounting',
         date: '2024-04-10',
         excerpt: 'The story of how Cynco began and the principles that guide our open accounting approach.',
+        tags: ['startup', 'fintech', 'open-accounting'],
         readingTime: '' // Initialize with empty string to satisfy TypeScript
       },
       {
@@ -64,6 +67,7 @@ export async function loadAllPosts(): Promise<PostMeta[]> {
         title: 'Scaling Open Accounting: Lessons from Our First Year',
         date: '2024-04-15',
         excerpt: 'What we\'ve learned about scalability, integration, and building trust in the financial ecosystem.',
+        tags: ['scaling', 'integration', 'trust', 'open-accounting'],
         readingTime: '' // Initialize with empty string to satisfy TypeScript
       },
     ] as PostMeta[]; // Cast as PostMeta to ensure TypeScript recognizes it
@@ -87,4 +91,46 @@ export async function loadAllPosts(): Promise<PostMeta[]> {
     console.error('Failed to load posts', error);
     return [];
   }
+}
+
+// Helper function to get all unique tags from posts
+export function getAllTags(posts: PostMeta[]): string[] {
+  const tagsSet = new Set<string>();
+  
+  posts.forEach(post => {
+    if (post.tags) {
+      post.tags.forEach(tag => tagsSet.add(tag));
+    }
+  });
+  
+  return Array.from(tagsSet).sort();
+}
+
+// Filter posts by tag
+export function filterPostsByTag(posts: PostMeta[], tag: string): PostMeta[] {
+  if (!tag) return posts;
+  
+  return posts.filter(post => 
+    post.tags && post.tags.includes(tag)
+  );
+}
+
+// Search posts by query string (title, excerpt, and tags)
+export function searchPosts(posts: PostMeta[], query: string): PostMeta[] {
+  if (!query) return posts;
+  
+  const lowerCaseQuery = query.toLowerCase();
+  
+  return posts.filter(post => {
+    // Search in title
+    if (post.title.toLowerCase().includes(lowerCaseQuery)) return true;
+    
+    // Search in excerpt
+    if (post.excerpt.toLowerCase().includes(lowerCaseQuery)) return true;
+    
+    // Search in tags
+    if (post.tags && post.tags.some(tag => tag.toLowerCase().includes(lowerCaseQuery))) return true;
+    
+    return false;
+  });
 }

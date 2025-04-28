@@ -11,6 +11,7 @@ import MDXContent from '@/components/blog/MDXContent';
 import { ArrowLeft } from 'lucide-react';
 import { useDocumentTitle } from '@/hooks/use-document-title';
 import { MDXProvider } from '@mdx-js/react';
+import { Badge } from "@/components/ui/badge";
 
 const BlogPost: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -91,17 +92,31 @@ const BlogPost: React.FC = () => {
             {post.meta.title}
           </h1>
           
-          <div className="flex items-center text-sm text-muted-foreground">
-            <time dateTime={post.meta.date}>
-              {formatBlogDate(post.meta.date)}
-            </time>
-            {post.meta.readingTime && (
-              <>
-                <span className="mx-2">•</span>
-                <span>{post.meta.readingTime}</span>
-              </>
-            )}
+          <div className="flex flex-wrap items-center gap-2 mb-4">
+            <div className="flex items-center text-sm text-muted-foreground">
+              <time dateTime={post.meta.date}>
+                {formatBlogDate(post.meta.date)}
+              </time>
+              {post.meta.readingTime && (
+                <>
+                  <span className="mx-2">•</span>
+                  <span>{post.meta.readingTime}</span>
+                </>
+              )}
+            </div>
           </div>
+          
+          {post.meta.tags && post.meta.tags.length > 0 && (
+            <div className="flex flex-wrap gap-2 mb-6">
+              {post.meta.tags.map(tag => (
+                <Link to={`/blog?tag=${tag}`} key={tag}>
+                  <Badge className="bg-secondary text-secondary-foreground hover:bg-secondary/80">
+                    #{tag}
+                  </Badge>
+                </Link>
+              ))}
+            </div>
+          )}
         </header>
         
         <MDXProvider>
