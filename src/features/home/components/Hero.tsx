@@ -2,7 +2,7 @@
 import React from 'react';
 import SectionContainer from '@/components/common/SectionContainer';
 import { cn } from "@/lib/utils";
-import { ChevronRight, Headphones, HeadphonesOff } from 'lucide-react';
+import { ChevronRight, Headphones, HeadphoneOff } from 'lucide-react';
 import { Command } from '@/components/ui/command';
 import { useTextToSpeech } from '@/hooks/use-text-to-speech';
 
@@ -40,7 +40,7 @@ const Hero = React.forwardRef<HTMLDivElement, HeroProps>(
               >
                 {isSpeaking ? (
                   <>
-                    <HeadphonesOff size={16} />
+                    <HeadphoneOff size={16} />
                     Stop Reading
                   </>
                 ) : (
