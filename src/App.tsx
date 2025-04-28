@@ -9,8 +9,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import { ErrorBoundary, FallbackProps } from "react-error-boundary";
 
-const queryClient = new QueryClient();
-
 // Simple fallback component for error boundary
 const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => (
   <div className="flex flex-col items-center justify-center min-h-screen p-4">
@@ -27,23 +25,28 @@ const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => (
   </div>
 );
 
-const App = () => (
-  <ErrorBoundary FallbackComponent={ErrorFallback}>
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
-  </ErrorBoundary>
-);
+const App = () => {
+  // Create query client instance inside component
+  const queryClient = new QueryClient();
+  
+  return (
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BrowserRouter>
+          </TooltipProvider>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
+  );
+};
 
 export default App;
