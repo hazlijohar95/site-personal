@@ -7,7 +7,6 @@ export default {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    "./posts/**/*.{md,mdx}",
   ],
   prefix: "",
   theme: {
@@ -108,6 +107,10 @@ export default {
         'slide-up': {
           "0%": { transform: "translateY(10px)", opacity: "0" },
           "100%": { transform: "translateY(0)", opacity: "1" }
+        },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" }
         }
       },
       animation: {
@@ -119,83 +122,8 @@ export default {
         'dock-hover': 'dock-hover 0.2s ease-out',
         'slide-up': 'slide-up 0.5s ease-out',
         'progress-fill': 'progress-fill 2s ease-out'
-      },
-      typography: (theme) => ({
-        DEFAULT: {
-          css: {
-            color: 'var(--foreground)',
-            a: {
-              color: 'var(--foreground)',
-              textDecoration: 'underline',
-              fontWeight: '500',
-              '&:hover': {
-                opacity: '0.8',
-              },
-            },
-            h1: {
-              fontFamily: theme('fontFamily.georgia'),
-              color: 'var(--foreground)',
-            },
-            h2: {
-              fontFamily: theme('fontFamily.georgia'),
-              color: 'var(--foreground)',
-            },
-            h3: {
-              fontFamily: theme('fontFamily.georgia'),
-              color: 'var(--foreground)',
-            },
-            code: {
-              color: 'var(--foreground)',
-              backgroundColor: 'var(--muted)',
-              padding: '0.2em 0.4em',
-              borderRadius: '0.25rem',
-              fontWeight: '400',
-              fontFamily: theme('fontFamily.mono'),
-            },
-            'code::before': {
-              content: '""',
-            },
-            'code::after': {
-              content: '""',
-            },
-            pre: {
-              backgroundColor: 'var(--muted)',
-              color: 'var(--foreground)',
-              overflow: 'auto',
-              fontFamily: theme('fontFamily.mono'),
-              borderRadius: '0.375rem',
-            },
-            blockquote: {
-              fontStyle: 'italic',
-              borderLeftColor: 'var(--border)',
-            },
-          },
-        },
-        dark: {
-          css: {
-            color: 'var(--foreground)',
-            a: {
-              color: 'var(--foreground)',
-            },
-            h1: {
-              color: 'var(--foreground)',
-            },
-            h2: {
-              color: 'var(--foreground)',
-            },
-            h3: {
-              color: 'var(--foreground)',
-            },
-            blockquote: {
-              borderLeftColor: 'var(--border)',
-            },
-          },
-        },
-      }),
+      }
     },
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    require("@tailwindcss/typography"),
-  ],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config;

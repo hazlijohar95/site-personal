@@ -4,7 +4,6 @@ import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
-import { useNavigate, useLocation } from 'react-router-dom';
 
 interface NavigationProps {
   onNavigate: (section: string) => void;
@@ -14,8 +13,6 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ onNavigate, activeSection, className }) => {
   const isMobile = useIsMobile();
-  const navigate = useNavigate();
-  const location = useLocation();
   
   const sections = [
     { id: 'home', label: 'Home' },
@@ -25,22 +22,6 @@ const Navigation: React.FC<NavigationProps> = ({ onNavigate, activeSection, clas
     { id: 'contact', label: 'Contact' }
   ];
   
-  const handleNavigation = (section: string) => {
-    if (location.pathname !== '/') {
-      navigate('/');
-      // Use setTimeout to allow navigation to complete
-      setTimeout(() => {
-        onNavigate(section);
-      }, 100);
-    } else {
-      onNavigate(section);
-    }
-  };
-  
-  const handleBlogNavigation = () => {
-    navigate('/blog');
-  };
-  
   // Mobile Navigation
   if (isMobile) {
     return (
@@ -49,36 +30,21 @@ const Navigation: React.FC<NavigationProps> = ({ onNavigate, activeSection, clas
           {sections.map((section) => (
             <button 
               key={section.id}
-              onClick={() => handleNavigation(section.id)}
+              onClick={() => onNavigate(section.id)}
               className={cn(
                 "flex flex-col items-center p-1 rounded-md transition-colors",
-                activeSection === section.id && location.pathname === '/'
+                activeSection === section.id 
                   ? 'text-black dark:text-white font-bold'
                   : 'text-gray-500 dark:text-gray-400'
               )}
               aria-label={section.label}
             >
               <span className="text-xs">{section.label}</span>
-              {activeSection === section.id && location.pathname === '/' && (
+              {activeSection === section.id && (
                 <span className="mt-1 h-1 w-1 rounded-full bg-black dark:bg-white" />
               )}
             </button>
           ))}
-          <button 
-            onClick={handleBlogNavigation}
-            className={cn(
-              "flex flex-col items-center p-1 rounded-md transition-colors",
-              location.pathname.startsWith('/blog')
-                ? 'text-black dark:text-white font-bold'
-                : 'text-gray-500 dark:text-gray-400'
-            )}
-            aria-label="Blog"
-          >
-            <span className="text-xs">Blog</span>
-            {location.pathname.startsWith('/blog') && (
-              <span className="mt-1 h-1 w-1 rounded-full bg-black dark:bg-white" />
-            )}
-          </button>
         </div>
       </div>
     );
@@ -90,22 +56,14 @@ const Navigation: React.FC<NavigationProps> = ({ onNavigate, activeSection, clas
       {sections.map((section) => (
         <button 
           key={section.id}
-          onClick={() => handleNavigation(section.id)}
+          onClick={() => onNavigate(section.id)}
           className={cn(
-            activeSection === section.id && location.pathname === '/' ? 'pg-nav-item-active' : 'pg-nav-item'
+            activeSection === section.id ? 'pg-nav-item-active' : 'pg-nav-item'
           )}
         >
           {section.label}
         </button>
       ))}
-      <button 
-        onClick={handleBlogNavigation}
-        className={cn(
-          location.pathname.startsWith('/blog') ? 'pg-nav-item-active' : 'pg-nav-item'
-        )}
-      >
-        Blog
-      </button>
     </nav>
   );
 };

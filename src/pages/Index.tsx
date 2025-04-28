@@ -1,4 +1,3 @@
-
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import Navigation from '@/components/layout/Navigation';
 import ThemeToggle from '@/components/layout/ThemeToggle';
@@ -9,7 +8,6 @@ import { ArrowUp } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import ContentSkeleton from '@/components/common/ContentSkeleton';
 import { CommandMenu } from '@/components/CommandMenu';
-import { useDocumentTitle } from '@/hooks/use-document-title';
 
 // Lazy load section components
 const Hero = lazy(() => import('@/features/home/components/Hero'));
@@ -34,8 +32,6 @@ const Index = () => {
   });
   
   const [showBackToTop, setShowBackToTop] = useState(false);
-  
-  useDocumentTitle('Hazli Johar');
 
   // Show back-to-top button after scrolling
   useEffect(() => {
