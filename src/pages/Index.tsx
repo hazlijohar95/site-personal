@@ -1,3 +1,4 @@
+
 import React, { Suspense, lazy, useEffect, useState } from 'react';
 import Navigation from '@/components/layout/Navigation';
 import ThemeToggle from '@/components/layout/ThemeToggle';
@@ -8,6 +9,8 @@ import { ArrowUp } from 'lucide-react';
 import { cn } from "@/lib/utils";
 import ContentSkeleton from '@/components/common/ContentSkeleton';
 import { CommandMenu } from '@/components/CommandMenu';
+import AnimatedSection from '@/components/AnimatedSection';
+import { Separator } from '@/components/ui/separator';
 
 // Lazy load section components
 const Hero = lazy(() => import('@/features/home/components/Hero'));
@@ -75,20 +78,37 @@ const Index = () => {
           <Hero ref={sectionRefs.home} />
         </Suspense>
 
-        <Suspense fallback={<SectionLoading />}>
-          <ProfileSection ref={sectionRefs.profile} />
-        </Suspense>
+        {/* Add subtle divider between sections */}
+        <Separator className="my-12 md:my-24 opacity-30 max-w-[200px] mx-auto" />
         
         <Suspense fallback={<SectionLoading />}>
-          <ExperienceSection ref={sectionRefs.experience} />
+          <AnimatedSection animationType="fade-in">
+            <ProfileSection ref={sectionRefs.profile} />
+          </AnimatedSection>
         </Suspense>
         
-        <Suspense fallback={<SectionLoading />}>
-          <MediaSection ref={sectionRefs.media} />
-        </Suspense>
+        <Separator className="my-12 md:my-24 opacity-30 max-w-[200px] mx-auto" />
         
         <Suspense fallback={<SectionLoading />}>
-          <ContactSection ref={sectionRefs.contact} />
+          <AnimatedSection animationType="fade-in" delay={100}>
+            <ExperienceSection ref={sectionRefs.experience} />
+          </AnimatedSection>
+        </Suspense>
+        
+        <Separator className="my-12 md:my-24 opacity-30 max-w-[200px] mx-auto" />
+        
+        <Suspense fallback={<SectionLoading />}>
+          <AnimatedSection animationType="fade-in" delay={150}>
+            <MediaSection ref={sectionRefs.media} />
+          </AnimatedSection>
+        </Suspense>
+        
+        <Separator className="my-12 md:my-24 opacity-30 max-w-[200px] mx-auto" />
+        
+        <Suspense fallback={<SectionLoading />}>
+          <AnimatedSection animationType="fade-in" delay={200}>
+            <ContactSection ref={sectionRefs.contact} />
+          </AnimatedSection>
         </Suspense>
       </div>
       
@@ -96,7 +116,7 @@ const Index = () => {
       {isMobile && showBackToTop && (
         <button
           onClick={handleBackToTop}
-          className="fixed bottom-20 right-4 z-40 p-2 rounded-full bg-background/80 backdrop-blur-md border border-border shadow-md"
+          className="fixed bottom-20 right-4 z-40 p-2 rounded-full bg-background/80 backdrop-blur-md border border-border shadow-md hover:scale-110 transition-transform duration-200"
           aria-label="Back to top"
         >
           <ArrowUp size={18} />

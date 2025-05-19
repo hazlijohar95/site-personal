@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -76,7 +77,7 @@
   }
 
   a {
-    @apply cursor-pointer text-foreground underline-offset-4 decoration-[0.5px] hover:underline;
+    @apply cursor-pointer text-foreground underline-offset-4 decoration-[0.5px] hover:underline transition-colors duration-200;
   }
 }
 
@@ -86,7 +87,7 @@
   }
 
   .pg-section {
-    @apply my-16;
+    @apply my-20 md:my-32;
   }
   
   .pg-heading {
@@ -126,11 +127,11 @@
   }
   
   .pg-link {
-    @apply hover:underline;
+    @apply hover:underline transition-colors duration-200;
   }
   
   .pg-form-input {
-    @apply w-full border border-gray-300 dark:border-gray-700 p-2 mb-4 font-georgia bg-transparent focus:ring-1 focus:ring-primary focus:outline-none;
+    @apply w-full border border-gray-300 dark:border-gray-700 p-2 mb-4 font-georgia bg-transparent focus:ring-1 focus:ring-primary focus:outline-none transition-colors duration-200;
   }
 
   .pg-form-input.mobile {
@@ -138,7 +139,7 @@
   }
   
   .pg-button {
-    @apply px-4 py-2 border border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 font-mono text-sm;
+    @apply px-4 py-2 border border-black dark:border-white hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors duration-200 font-mono text-sm hover:scale-[1.02] active:scale-[0.98];
   }
 
   .pg-button.mobile {
@@ -150,7 +151,7 @@
   }
 
   .glass-card {
-    @apply bg-background/50 backdrop-blur-lg border border-border/50 shadow-sm;
+    @apply bg-background/50 backdrop-blur-lg border border-border/50 shadow-sm transition-all duration-200 hover:shadow-md;
   }
   
   .gradient-text {
@@ -159,6 +160,15 @@
   
   .hover-card {
     @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-lg active:scale-[0.98];
+  }
+
+  /* Interactive element hover styles */
+  .interactive-element {
+    @apply transition-all duration-200 hover:opacity-80;
+  }
+
+  .interactive-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
   }
 }
 
@@ -191,4 +201,20 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* Additional animation keyframes */
+@keyframes subtle-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: subtle-slide-up 0.8s ease-out forwards;
 }
