@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { toast } from "@/components/ui/use-toast";
 import { Input } from "@/components/ui/input";
@@ -13,6 +12,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import FormLabel from '@/components/common/FormLabel';
 import LoadingButton from '@/components/common/LoadingButton';
 
 // Define the form schema with zod
