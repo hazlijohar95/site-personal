@@ -1,9 +1,28 @@
 
 import React, { useState, useEffect } from 'react';
 import { toast } from "@/components/ui/use-toast";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
+import LoadingButton from '@/components/common/LoadingButton';
+
+// Define the form schema with zod
+const contactFormSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Please enter a valid email address"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
 
 const RATE_LIMIT = {
   maxAttempts: 3,
@@ -11,12 +30,18 @@ const RATE_LIMIT = {
 };
 
 const ContactForm: React.FC = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [attempts, setAttempts] = useState(0);
   const [nextAllowedTime, setNextAllowedTime] = useState<number | null>(null);
+
+  const form = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
 
   // Load attempt data from localStorage on component mount
   useEffect(() => {
@@ -68,32 +93,9 @@ const ContactForm: React.FC = () => {
     return false;
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
+  const onSubmit = (data: ContactFormValues) => {
     // Check for rate limiting
     if (isRateLimited()) return;
-    
-    // Basic form validation
-    if (!name.trim() || !email.trim() || !message.trim()) {
-      toast({
-        title: "Validation Error",
-        description: "Please fill in all fields",
-        variant: "destructive",
-      });
-      return;
-    }
-    
-    // Email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      toast({
-        title: "Validation Error",
-        description: "Please enter a valid email address",
-        variant: "destructive",
-      });
-      return;
-    }
     
     setIsSubmitting(true);
     
@@ -106,71 +108,95 @@ const ContactForm: React.FC = () => {
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
       
-      // Clear form
-      setName('');
-      setEmail('');
-      setMessage('');
+      // Reset form
+      form.reset();
       setIsSubmitting(false);
     }, 1000);
   };
   
+  const isFormDisabled = isSubmitting || (nextAllowedTime && Date.now() < nextAllowedTime);
+  
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <div>
-        <label htmlFor="name" className="block text-sm mb-1 font-mono">
-          Name
-        </label>
-        <Input 
-          type="text" 
-          id="name" 
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="pg-form-input" 
-          placeholder="Your name" 
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="block text-sm mb-1 font-mono">
+                Name
+              </FormLabel>
+              <FormControl>
+                <Input 
+                  {...field} 
+                  placeholder="Your name"
+                  disabled={isFormDisabled}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-      </div>
-      
-      <div>
-        <label htmlFor="email" className="block text-sm mb-1 font-mono">
-          Email
-        </label>
-        <Input 
-          type="email" 
-          id="email" 
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="pg-form-input" 
-          placeholder="Your email" 
+        
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="block text-sm mb-1 font-mono">
+                Email
+              </FormLabel>
+              <FormControl>
+                <Input 
+                  {...field} 
+                  type="email" 
+                  placeholder="Your email"
+                  disabled={isFormDisabled}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-      </div>
-      
-      <div>
-        <label htmlFor="message" className="block text-sm mb-1 font-mono">
-          Message
-        </label>
-        <Textarea 
-          id="message" 
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          className="pg-form-input min-h-[120px]" 
-          placeholder="Your message" 
+        
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="block text-sm mb-1 font-mono">
+                Message
+              </FormLabel>
+              <FormControl>
+                <Textarea 
+                  {...field}
+                  className="min-h-[120px]"
+                  placeholder="Your message"
+                  disabled={isFormDisabled}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
-      </div>
-      
-      <Button 
-        type="submit"
-        className="pg-button"
-        disabled={isSubmitting || (nextAllowedTime && Date.now() < nextAllowedTime)}
-      >
-        {isSubmitting ? 'Sending...' : 'Send Message'}
-      </Button>
-      
-      {attempts > 0 && attempts < RATE_LIMIT.maxAttempts && (
-        <p className="text-xs text-muted-foreground mt-2">
-          You have {RATE_LIMIT.maxAttempts - attempts} submission{(RATE_LIMIT.maxAttempts - attempts) !== 1 ? 's' : ''} remaining.
-        </p>
-      )}
-    </form>
+        
+        <LoadingButton 
+          type="submit"
+          isLoading={isSubmitting}
+          loadingText="Sending..."
+          disabled={isFormDisabled}
+        >
+          Send Message
+        </LoadingButton>
+        
+        {attempts > 0 && attempts < RATE_LIMIT.maxAttempts && (
+          <p className="text-xs text-muted-foreground mt-2">
+            You have {RATE_LIMIT.maxAttempts - attempts} submission{(RATE_LIMIT.maxAttempts - attempts) !== 1 ? 's' : ''} remaining.
+          </p>
+        )}
+      </form>
+    </Form>
   );
 };
 

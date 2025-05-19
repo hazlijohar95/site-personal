@@ -1,9 +1,10 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import SectionContainer from '@/components/common/SectionContainer';
 import SectionHeading from '@/components/common/SectionHeading';
 import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
+import { Skeleton } from '@/components/ui/skeleton';
 
 interface ContactSectionProps {
   ref?: React.RefObject<HTMLDivElement>;
@@ -11,8 +12,10 @@ interface ContactSectionProps {
 
 const ContactSection = React.forwardRef<HTMLDivElement, ContactSectionProps>(
   (props, ref) => {
+    const [isCalendarLoading, setIsCalendarLoading] = useState(true);
+    
     useEffect(() => {
-      // Initialize Cal.com
+      // Initialize Cal.com with loading state
       const script = document.createElement('script');
       script.type = 'text/javascript';
       script.innerHTML = `
@@ -44,9 +47,30 @@ const ContactSection = React.forwardRef<HTMLDivElement, ContactSectionProps>(
         })(window, "https://app.cal.com/embed/embed.js", "init");
         Cal("init", "30min", {origin:"https://cal.com"});
         Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+        
+        // Add event listener for when Cal.com is fully loaded
+        document.addEventListener("cal:ready", function() {
+          document.dispatchEvent(new CustomEvent("calendarLoaded"));
+        });
       `;
+      
       document.head.appendChild(script);
+      
+      // Create event listener for when Cal.com is loaded
+      const handleCalendarLoaded = () => {
+        setIsCalendarLoading(false);
+      };
+      
+      document.addEventListener("calendarLoaded", handleCalendarLoaded);
+      
+      // Fallback in case the event doesn't fire
+      const timeout = setTimeout(() => {
+        setIsCalendarLoading(false);
+      }, 3000);
+      
       return () => {
+        document.removeEventListener("calendarLoaded", handleCalendarLoaded);
+        clearTimeout(timeout);
         document.head.removeChild(script);
       };
     }, []);
@@ -56,7 +80,15 @@ const ContactSection = React.forwardRef<HTMLDivElement, ContactSectionProps>(
         <SectionHeading>Contact</SectionHeading>
         
         <div className="grid md:grid-cols-2 gap-8">
-          <ContactInfo />
+          <div>
+            <ContactInfo isCalendarLoading={isCalendarLoading} />
+            {isCalendarLoading && (
+              <div className="mt-3">
+                <Skeleton className="h-4 w-40 mb-2" />
+                <Skeleton className="h-10 w-48" />
+              </div>
+            )}
+          </div>
           <ContactForm />
         </div>
       </SectionContainer>
