@@ -1,42 +1,31 @@
-
 import React from 'react';
 import { MapPin, Sparkles, Building2, Code, TrendingUp } from 'lucide-react';
 import SocialLinks from '@/components/SocialLinks';
-
 const AboutSection: React.FC = () => {
-  const highlights = [
-    {
-      text: "CEO & Co-founder at Cynco — AI-native accounting infrastructure",
-      icon: <Building2 size={20} />,
-      featured: true
-    },
-    {
-      text: "Chartered Accountant who worked with 500+ companies",
-      icon: <TrendingUp size={18} />,
-      featured: false
-    },
-    {
-      text: "Accountant turned founder who codes, designs, and ships products",
-      icon: <Code size={18} />,
-      featured: false
-    },
-    {
-      text: "Co-founded and invested in F&B, retail, fashion, and real estate",
-      icon: <Sparkles size={18} />,
-      featured: false
-    }
-  ];
-
-  return (
-    <section className="space-y-8">
+  const highlights = [{
+    text: "CEO & Co-founder at Cynco — AI-native accounting infrastructure",
+    icon: <Building2 size={20} />,
+    featured: true
+  }, {
+    text: "Chartered Accountant who worked with 500+ companies",
+    icon: <TrendingUp size={18} />,
+    featured: false
+  }, {
+    text: "Accountant turned founder who codes, designs, and ships products",
+    icon: <Code size={18} />,
+    featured: false
+  }, {
+    text: "Co-founded and invested in F&B, retail, fashion, and real estate",
+    icon: <Sparkles size={18} />,
+    featured: false
+  }];
+  return <section className="space-y-8">
       <div className="flex flex-col items-center space-y-6 mb-10">
         <div className="relative">
           <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-full overflow-hidden border-2 border-border/20 shadow-lg hover:scale-105 transition-all duration-500 hover:shadow-xl">
             <img src="/lovable-uploads/c90088f8-4c29-43a9-a20b-4a664df5149f.png" alt="Hazli Johar" className="w-full h-full object-cover" />
           </div>
-          <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center shadow-lg">
-            <Sparkles size={16} className="text-primary-foreground" />
-          </div>
+          
         </div>
         
         <div className="text-center space-y-4">
@@ -50,25 +39,20 @@ const AboutSection: React.FC = () => {
 
       <div className="max-w-4xl mx-auto">
         {/* Featured highlight - full width */}
-        <div 
-          className="group relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-primary/5 border border-border/30 hover:border-primary/30 rounded-xl p-6 mb-4 transition-all duration-300 hover:shadow-lg"
-          style={{ animationDelay: '0ms' }}
-        >
+        <div className="group relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-primary/5 border border-border/30 hover:border-primary/30 rounded-xl p-6 mb-4 transition-all duration-300 hover:shadow-lg" style={{
+        animationDelay: '0ms'
+      }}>
           <div className="flex items-start gap-4">
             <div className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-xl group-hover:bg-primary/20 transition-colors duration-300">
               {highlights[0].icon}
             </div>
             <div className="flex-1">
               <p className="text-base sm:text-lg font-medium leading-relaxed">
-                {highlights[0].text.includes('Cynco') ? (
-                  <>
+                {highlights[0].text.includes('Cynco') ? <>
                     {highlights[0].text.split('Cynco')[0]}
                     <strong className="text-primary">Cynco</strong>
                     {highlights[0].text.split('Cynco')[1]}
-                  </>
-                ) : (
-                  highlights[0].text
-                )}
+                  </> : highlights[0].text}
               </p>
             </div>
           </div>
@@ -76,12 +60,9 @@ const AboutSection: React.FC = () => {
 
         {/* Regular highlights - consistent grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {highlights.slice(1).map((highlight, index) => (
-            <div 
-              key={index}
-              className="group relative overflow-hidden bg-card/40 hover:bg-card/60 border border-border/20 hover:border-border/40 rounded-lg p-5 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-md"
-              style={{ animationDelay: `${(index + 1) * 100}ms` }}
-            >
+          {highlights.slice(1).map((highlight, index) => <div key={index} className="group relative overflow-hidden bg-card/40 hover:bg-card/60 border border-border/20 hover:border-border/40 rounded-lg p-5 transition-all duration-300 hover:translate-y-[-2px] hover:shadow-md" style={{
+          animationDelay: `${(index + 1) * 100}ms`
+        }}>
               <div className="flex items-start gap-3">
                 <div className="flex items-center justify-center w-10 h-10 bg-foreground/10 rounded-lg group-hover:bg-foreground/20 transition-colors duration-300">
                   {highlight.icon}
@@ -90,12 +71,9 @@ const AboutSection: React.FC = () => {
                   {highlight.text}
                 </p>
               </div>
-            </div>
-          ))}
+            </div>)}
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default AboutSection;
