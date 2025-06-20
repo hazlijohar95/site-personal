@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { Github, BookOpen, Twitter, Instagram, Linkedin } from 'lucide-react';
+import { Github, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 interface SocialLinksProps {
@@ -17,11 +16,6 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
       label: "GitHub", 
       url: "https://github.com/hazlijohar95",
       icon: <Github size={16} />
-    },
-    { 
-      label: "Blog", 
-      url: "https://hazli.bearblog.dev",
-      icon: <BookOpen size={16} />
     },
     { 
       label: "Twitter", 
