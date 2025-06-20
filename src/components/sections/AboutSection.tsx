@@ -22,21 +22,17 @@ const AboutSection: React.FC = () => {
 
       <div className="space-y-3 max-w-3xl mx-auto">
         <div className="grid gap-2 sm:gap-3">
-          <div className="flex gap-3 p-3 sm:p-4 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 transition-colors">
-            <span className="inline-block w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-            <p className="text-sm sm:text-base leading-relaxed">CEO & Co-founder at <strong>Cynco</strong> — building AI-native accounting infrastructure for businesses and accounting firms</p>
+          <div className="p-3 sm:p-4 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 transition-colors">
+            <p className="text-sm sm:text-base leading-relaxed">• CEO & Co-founder at <strong>Cynco</strong> — building AI-native accounting infrastructure for businesses and accounting firms</p>
           </div>
-          <div className="flex gap-3 p-3 sm:p-4 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 transition-colors">
-            <span className="inline-block w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-            <p className="text-sm sm:text-base leading-relaxed">Chartered Accountant who worked with 500+ companies</p>
+          <div className="p-3 sm:p-4 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 transition-colors">
+            <p className="text-sm sm:text-base leading-relaxed">• Chartered Accountant who worked with 500+ companies</p>
           </div>
-          <div className="flex gap-3 p-3 sm:p-4 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 transition-colors">
-            <span className="inline-block w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-            <p className="text-sm sm:text-base leading-relaxed">Accountant turned founder who learn to code, designs, and ships products</p>
+          <div className="p-3 sm:p-4 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 transition-colors">
+            <p className="text-sm sm:text-base leading-relaxed">• Accountant turned founder who learn to code, designs, and ships products</p>
           </div>
-          <div className="flex gap-3 p-3 sm:p-4 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 transition-colors">
-            <span className="inline-block w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></span>
-            <p className="text-sm sm:text-base leading-relaxed">Co-founded and invested in F&B, retail, fashion, and real estate businesses</p>
+          <div className="p-3 sm:p-4 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 transition-colors">
+            <p className="text-sm sm:text-base leading-relaxed">• Co-founded and invested in F&B, retail, fashion, and real estate businesses</p>
           </div>
         </div>
       </div>
