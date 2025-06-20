@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
+
 const Index = () => {
   const isMobile = useIsMobile();
   const [isVideoLoading, setIsVideoLoading] = useState(true);
@@ -54,6 +55,7 @@ const Index = () => {
       document.head.removeChild(script);
     };
   }, []);
+
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -62,7 +64,9 @@ const Index = () => {
     });
     (e.target as HTMLFormElement).reset();
   };
-  return <div className="min-h-screen bg-background">
+
+  return (
+    <div className="min-h-screen bg-background">
       {/* Theme Toggle */}
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
@@ -102,12 +106,10 @@ const Index = () => {
           </div>
 
           <div className="space-y-4">
-            
-            
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <span className="inline-block w-2 h-2 bg-foreground rounded-full mt-2 flex-shrink-0"></span>
-                <p>Co-founder of <strong>Cynco</strong> — building AI-native accounting infrastructure that's real-time and automated</p>
+                <p>CEO & Co-founder at <strong>Cynco</strong> — building AI-native accounting infrastructure for businesses and accounting firms</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="inline-block w-2 h-2 bg-foreground rounded-full mt-2 flex-shrink-0"></span>
@@ -237,6 +239,8 @@ const Index = () => {
           <p>© 2025 Hazli Johar. All rights reserved.</p>
         </footer>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
