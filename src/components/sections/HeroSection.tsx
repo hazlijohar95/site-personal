@@ -6,10 +6,7 @@ const HeroSection: React.FC = () => {
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent leading-tight px-2">
           Hazli Johar
         </h1>
-        <div className="flex items-center justify-center gap-2 text-sm sm:text-base md:text-lg text-muted-foreground font-mono px-4">
-          <ArrowRight size={14} className="flex-shrink-0 sm:w-4 sm:h-4" />
-          
-        </div>
+        
       </div>
     </section>;
 };
