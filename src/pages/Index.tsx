@@ -111,7 +111,7 @@ const Index = () => {
               </div>
               <div className="flex items-start gap-3">
                 <span className="inline-block w-2 h-2 bg-foreground rounded-full mt-2 flex-shrink-0"></span>
-                <p>Former chartered accountant who worked with 500+ companies</p>
+                <p>Chartered Accountant who worked with 500+ companies</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="inline-block w-2 h-2 bg-foreground rounded-full mt-2 flex-shrink-0"></span>
