@@ -15,7 +15,7 @@ const Index = () => {
         <ThemeToggle />
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 md:py-12 space-y-6 sm:space-y-8 md:space-y-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-12 sm:space-y-16 md:space-y-20">
         <HeroSection />
         <AboutSection />
         <CurrentRolesSection />
@@ -23,7 +23,7 @@ const Index = () => {
         <ContactSection />
 
         {/* Footer */}
-        <footer className="text-center text-xs text-muted-foreground pt-6 border-t border-border/30">
+        <footer className="text-center text-xs text-muted-foreground pt-8 border-t border-border/20">
           <p>© 2025 Hazli Johar. All rights reserved.</p>
         </footer>
       </div>

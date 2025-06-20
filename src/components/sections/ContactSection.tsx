@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
-import { Mail, Calendar, Loader2 } from 'lucide-react';
+import { Mail, Calendar, Loader2, Send } from 'lucide-react';
 
 const ContactSection: React.FC = () => {
   const [isCalendarLoading, setIsCalendarLoading] = useState(true);
@@ -39,45 +39,63 @@ const ContactSection: React.FC = () => {
       Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
     `;
     document.head.appendChild(script);
-    const timeout = setTimeout(() => setIsCalendarLoading(false), 2000);
+    
+    // Reduced timeout for better UX
+    const timeout = setTimeout(() => setIsCalendarLoading(false), 1500);
     return () => {
       clearTimeout(timeout);
-      document.head.removeChild(script);
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
     };
   }, []);
 
   return (
-    <section className="space-y-4 sm:space-y-6">
-      <h3 className="text-lg sm:text-xl font-bold px-2">Let's Connect</h3>
-      
-      <div className="space-y-4 sm:space-y-5">
-        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed px-2">
+    <section className="space-y-6">
+      <div className="text-center space-y-2">
+        <h3 className="text-xl sm:text-2xl font-bold">Let's Connect</h3>
+        <p className="text-muted-foreground text-sm sm:text-base max-w-2xl mx-auto">
           Feel free to reach out for collaborations, speaking engagements, or just to say hello!
         </p>
-        
-        <div className="space-y-3 sm:space-y-4">
-          <div className="flex items-center gap-3 p-4 sm:p-5 bg-card/50 rounded-lg border border-border/30">
-            <Mail size={16} className="flex-shrink-0 sm:w-5 sm:h-5 mt-0.5 sm:mt-0" />
-            <a href="mailto:work@hazli.wtf" className="hover:underline text-sm sm:text-base break-all leading-tight">work@hazli.wtf</a>
+      </div>
+      
+      <div className="grid gap-4 sm:grid-cols-2 max-w-2xl mx-auto">
+        <div className="group flex items-center gap-3 p-4 sm:p-5 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 hover:bg-card/50 transition-all duration-200 min-h-[60px]">
+          <div className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+            <Mail size={18} className="text-primary" />
           </div>
-          
-          <div className="flex items-center gap-3 p-4 sm:p-5 bg-card/50 rounded-lg border border-border/30">
-            <Calendar size={16} className="flex-shrink-0 sm:w-5 sm:h-5" />
+          <div className="flex-1 min-w-0">
+            <a href="mailto:work@hazli.wtf" className="block hover:text-primary transition-colors">
+              <p className="text-xs text-muted-foreground mb-1">Email</p>
+              <p className="text-sm sm:text-base font-medium break-all">work@hazli.wtf</p>
+            </a>
+          </div>
+          <Send size={16} className="text-muted-foreground group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100" />
+        </div>
+        
+        <div className="group flex items-center gap-3 p-4 sm:p-5 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 hover:bg-card/50 transition-all duration-200 min-h-[60px]">
+          <div className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+            <Calendar size={18} className="text-primary" />
+          </div>
+          <div className="flex-1 min-w-0">
             <button 
-              className="hover:underline flex items-center gap-2 text-sm sm:text-base text-left w-full" 
+              className="w-full text-left hover:text-primary transition-colors" 
               data-cal-link="hazli-johar-cynco/30min" 
               data-cal-namespace="30min" 
               data-cal-config='{"layout":"month_view"}' 
               disabled={isCalendarLoading}
             >
-              {isCalendarLoading ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin flex-shrink-0" />
-                  <span>Loading scheduler...</span>
-                </>
-              ) : (
-                'Schedule a meeting'
-              )}
+              <p className="text-xs text-muted-foreground mb-1">Schedule</p>
+              <div className="flex items-center gap-2">
+                {isCalendarLoading ? (
+                  <>
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    <span className="text-sm sm:text-base">Loading...</span>
+                  </>
+                ) : (
+                  <span className="text-sm sm:text-base font-medium">Book a meeting</span>
+                )}
+              </div>
             </button>
           </div>
         </div>
