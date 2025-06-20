@@ -21,8 +21,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         return savedTheme as Theme;
       }
     }
-    // Default to dark mode instead of checking system preference
-    return 'dark';
+    // Default to light mode instead of dark mode
+    return 'light';
   });
   
   // Apply theme changes to DOM
