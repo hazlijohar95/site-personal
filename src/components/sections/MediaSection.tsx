@@ -20,27 +20,27 @@ const MediaSection: React.FC = () => {
   ];
 
   return (
-    <section className="space-y-6">
-      <h3 className="text-xl font-bold">Featured Media</h3>
+    <section className="space-y-4 md:space-y-6">
+      <h3 className="text-lg md:text-xl font-bold">Featured Media</h3>
       
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="space-y-4">
-          <div className="space-y-3">
-            {mediaItems.map((item, index) => (
-              <Card key={index} className="p-4 border border-border/50 hover:border-border transition-colors">
-                <a href={item.url} target="_blank" rel="noopener noreferrer" className="block space-y-2">
-                  <p className="font-medium line-clamp-2 text-sm">{item.title}</p>
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                    <span>{item.source}</span>
-                    <ExternalLink size={12} />
-                  </div>
-                </a>
-              </Card>
-            ))}
-          </div>
+      <div className="space-y-6">
+        {/* Media Links */}
+        <div className="space-y-3">
+          {mediaItems.map((item, index) => (
+            <Card key={index} className="p-3 md:p-4 border border-border/50 hover:border-border transition-colors">
+              <a href={item.url} target="_blank" rel="noopener noreferrer" className="block space-y-2">
+                <p className="font-medium text-sm md:text-base leading-snug">{item.title}</p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span>{item.source}</span>
+                  <ExternalLink size={12} />
+                </div>
+              </a>
+            </Card>
+          ))}
         </div>
         
-        <div className="space-y-4">
+        {/* Video Section */}
+        <div className="space-y-3">
           <div className="relative">
             <div className="aspect-video bg-muted/20 overflow-hidden rounded-md border border-border/30 relative">
               {isVideoLoading && (

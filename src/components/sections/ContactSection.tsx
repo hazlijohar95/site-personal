@@ -47,24 +47,24 @@ const ContactSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="space-y-4">
-      <h3 className="text-xl font-bold">Let's Connect</h3>
+    <section className="space-y-3 md:space-y-4">
+      <h3 className="text-lg md:text-xl font-bold">Let's Connect</h3>
       
-      <div className="space-y-4">
-        <p className="text-muted-foreground">
+      <div className="space-y-3 md:space-y-4">
+        <p className="text-sm md:text-base text-muted-foreground">
           Feel free to reach out for collaborations, speaking engagements, or just to say hello!
         </p>
         
         <div className="space-y-3">
-          <div className="flex items-center gap-3">
-            <Mail size={16} />
-            <a href="mailto:work@hazli.wtf" className="hover:underline">work@hazli.wtf</a>
+          <div className="flex items-center gap-3 p-3 md:p-0">
+            <Mail size={16} className="flex-shrink-0" />
+            <a href="mailto:work@hazli.wtf" className="hover:underline text-sm md:text-base">work@hazli.wtf</a>
           </div>
           
-          <div className="flex items-center gap-3">
-            <Calendar size={16} />
+          <div className="flex items-center gap-3 p-3 md:p-0">
+            <Calendar size={16} className="flex-shrink-0" />
             <button 
-              className="hover:underline flex items-center gap-2" 
+              className="hover:underline flex items-center gap-2 text-sm md:text-base text-left" 
               data-cal-link="hazli-johar-cynco/30min" 
               data-cal-namespace="30min" 
               data-cal-config='{"layout":"month_view"}' 
@@ -72,7 +72,7 @@ const ContactSection: React.FC = () => {
             >
               {isCalendarLoading ? (
                 <>
-                  <Loader2 className="h-4 w-4 animate-spin" />
+                  <Loader2 className="h-4 w-4 animate-spin flex-shrink-0" />
                   <span>Loading scheduler...</span>
                 </>
               ) : (
