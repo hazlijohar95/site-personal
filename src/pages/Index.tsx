@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import ThemeToggle from '@/components/layout/ThemeToggle';
 import { ArrowRight, Mail, Calendar, MapPin, ExternalLink, Loader2 } from 'lucide-react';
@@ -135,7 +136,7 @@ const Index = () => {
             <p><strong>Co-Founder & CEO</strong> at Cynco — Disrupting accounting with AI-native infrastructure</p>
             <p><strong>Entrepreneur in Residence</strong> at Mranti — Supporting startup ecosystem development</p>
             <p><strong>Partner</strong> at Accelzone Ventures — Investing in early-stage startups</p>
-            <p><strong>Founding Partner</strong> at Hazi Johar & Co. and PACCT Malaysia — Chartered accounting services</p>
+            <p><strong>Founder & Partner</strong> at Hazli Johar & Co. — helping global companies build and grow in Malaysia and beyond</p>
           </div>
         </section>
 
