@@ -41,8 +41,8 @@ const CurrentRolesSection: React.FC = () => {
                 <div className="flex items-center gap-2 mb-1">
                   <h4 className="font-semibold text-sm sm:text-base">{role.title}</h4>
                   {role.isActive && (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs rounded-full">
-                      <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 bg-black dark:bg-white text-white dark:text-black text-xs font-medium rounded-full">
+                      <span className="w-1.5 h-1.5 bg-white dark:bg-black rounded-full"></span>
                       Active
                     </span>
                   )}
