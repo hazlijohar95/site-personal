@@ -1,8 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import ThemeToggle from '@/components/layout/ThemeToggle';
-import { ArrowRight, Mail, Calendar, MapPin, Briefcase, ExternalLink, Loader2 } from 'lucide-react';
-import { cn } from "@/lib/utils";
+import { ArrowRight, Mail, Calendar, MapPin, ExternalLink, Loader2 } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import SocialLinks from '@/components/SocialLinks';
 import { Card } from '@/components/ui/card';
@@ -76,7 +75,7 @@ const Index = () => {
         <ThemeToggle />
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 py-12 space-y-16">
+      <div className="max-w-4xl mx-auto px-6 py-12 space-y-12">
         {/* Hero Section */}
         <section className="text-center space-y-6">
           <div className="space-y-4">
@@ -91,7 +90,7 @@ const Index = () => {
         </section>
 
         {/* About Section */}
-        <section className="space-y-8">
+        <section className="space-y-6">
           <div className="flex flex-col md:flex-row gap-6 items-start">
             <div className="w-32 h-32 rounded-full overflow-hidden border border-border flex-shrink-0 mx-auto md:mx-0">
               <img 
@@ -113,60 +112,50 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="prose prose-gray dark:prose-invert max-w-none space-y-4">
-            <p className="text-lg font-medium">
+          <div className="space-y-4">
+            <p className="text-lg font-medium text-center md:text-left">
               "Currently on a mission @ Cynco."
             </p>
             
-            <p>
-              I'm the co-founder of <strong>Cynco</strong>. We're building the AI-native accounting infrastructure — rethinking how financial data flows, from ingestion to reporting. Most accounting tools were designed for another era — slow, manual, and backward-looking. We're building from first principles: real-time, automated, and built around how data actually moves today.
-            </p>
-            
-            <p>
-              Before Cynco, I ran a chartered firm and worked with 500+ companies. I saw how much time was lost wrangling data instead of advising. We're changing that. I'm an accountant turned founder who learns to write code, designs workflows, and ships product.
-            </p>
-            
-            <p>
-              Outside of accounting, I co-founded and co-invested in F&B, retail, fashion, and real estate businesses alongside other syndicates.
-            </p>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <span className="inline-block w-2 h-2 bg-foreground rounded-full mt-2 flex-shrink-0"></span>
+                <p>Co-founder of <strong>Cynco</strong> — building AI-native accounting infrastructure that's real-time and automated</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="inline-block w-2 h-2 bg-foreground rounded-full mt-2 flex-shrink-0"></span>
+                <p>Former chartered accountant who worked with 500+ companies</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="inline-block w-2 h-2 bg-foreground rounded-full mt-2 flex-shrink-0"></span>
+                <p>Accountant turned founder who codes, designs, and ships products</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="inline-block w-2 h-2 bg-foreground rounded-full mt-2 flex-shrink-0"></span>
+                <p>Co-founded and invested in F&B, retail, fashion, and real estate businesses</p>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* Experience Section */}
-        <section className="space-y-6">
-          <h3 className="text-2xl font-bold flex items-center gap-2">
-            <Briefcase size={20} />
-            Current Roles
-          </h3>
+        {/* Current Roles Section */}
+        <section className="space-y-4">
+          <h3 className="text-xl font-bold">Current Roles</h3>
           
-          <div className="grid md:grid-cols-2 gap-4">
-            {[
-              { role: "Co-Founder & CEO", company: "Cynco" },
-              { role: "Entrepreneur in Residence", company: "Mranti" },
-              { role: "Partner", company: "Accelzone Ventures" },
-              { role: "Founding Partner", company: "Hazi Johar & Co. and PACCT Malaysia" }
-            ].map((exp, index) => (
-              <Card key={index} className="p-4 border border-border/50">
-                <div className="space-y-2">
-                  <h4 className="font-semibold">{exp.role}</h4>
-                  <p className="text-muted-foreground text-sm">{exp.company}</p>
-                  <div className="flex items-center gap-2">
-                    <span className="inline-block w-2 h-2 bg-green-500 rounded-full"></span>
-                    <span className="text-xs text-muted-foreground">Active</span>
-                  </div>
-                </div>
-              </Card>
-            ))}
+          <div className="space-y-2">
+            <p><strong>Co-Founder & CEO</strong> at Cynco — Disrupting accounting with AI-native infrastructure</p>
+            <p><strong>Entrepreneur in Residence</strong> at Mranti — Supporting startup ecosystem development</p>
+            <p><strong>Partner</strong> at Accelzone Ventures — Investing in early-stage startups</p>
+            <p><strong>Founding Partner</strong> at Hazi Johar & Co. and PACCT Malaysia — Chartered accounting services</p>
           </div>
         </section>
 
         {/* Media Section */}
         <section className="space-y-6">
-          <h3 className="text-2xl font-bold">Featured Media</h3>
+          <h3 className="text-xl font-bold">Featured Media</h3>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
-              <h4 className="text-lg font-semibold">Recent Features</h4>
               <div className="space-y-3">
                 {[
                   {
@@ -182,10 +171,10 @@ const Index = () => {
                 ].map((item, index) => (
                   <Card key={index} className="p-4 border border-border/50 hover:border-border transition-colors">
                     <a href={item.url} target="_blank" rel="noopener noreferrer" className="block space-y-2">
-                      <p className="font-medium line-clamp-2">{item.title}</p>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <p className="font-medium line-clamp-2 text-sm">{item.title}</p>
+                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
                         <span>{item.source}</span>
-                        <ExternalLink size={14} />
+                        <ExternalLink size={12} />
                       </div>
                     </a>
                   </Card>
@@ -194,7 +183,6 @@ const Index = () => {
             </div>
             
             <div className="space-y-4">
-              <h4 className="text-lg font-semibold">Video Feature</h4>
               <div className="relative">
                 <div className="aspect-video bg-muted/20 overflow-hidden rounded-md border border-border/30 relative">
                   {isVideoLoading && (
@@ -212,23 +200,23 @@ const Index = () => {
                     onLoad={() => setIsVideoLoading(false)}
                   ></iframe>
                 </div>
-                <p className="text-sm text-muted-foreground mt-2">Featured on RTM (Youtube)</p>
+                <p className="text-xs text-muted-foreground mt-2">Featured on RTM (Youtube)</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* Contact Section */}
-        <section className="space-y-8">
-          <h3 className="text-2xl font-bold">Let's Connect</h3>
+        <section className="space-y-6">
+          <h3 className="text-xl font-bold">Let's Connect</h3>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-6">
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-4">
               <p className="text-muted-foreground">
                 Feel free to reach out for collaborations, speaking engagements, or just to say hello!
               </p>
               
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <Mail size={16} />
                   <a href="mailto:work@hazli.wtf" className="hover:underline">work@hazli.wtf</a>
@@ -256,22 +244,22 @@ const Index = () => {
               </div>
             </div>
             
-            <Card className="p-6 border border-border/50">
+            <Card className="p-4 border border-border/50">
               <form onSubmit={handleFormSubmit} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-mono mb-1">Name</label>
-                    <Input id="name" placeholder="Your name" required />
+                    <label htmlFor="name" className="block text-xs font-mono mb-1">Name</label>
+                    <Input id="name" placeholder="Your name" required className="text-sm" />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-mono mb-1">Email</label>
-                    <Input id="email" type="email" placeholder="Your email" required />
+                    <label htmlFor="email" className="block text-xs font-mono mb-1">Email</label>
+                    <Input id="email" type="email" placeholder="Your email" required className="text-sm" />
                   </div>
                 </div>
                 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-mono mb-1">Message</label>
-                  <Textarea id="message" placeholder="Your message" className="min-h-[100px]" required />
+                  <label htmlFor="message" className="block text-xs font-mono mb-1">Message</label>
+                  <Textarea id="message" placeholder="Your message" className="min-h-[80px] text-sm" required />
                 </div>
                 
                 <Button type="submit" className="w-full">
@@ -283,7 +271,7 @@ const Index = () => {
         </section>
 
         {/* Footer */}
-        <footer className="text-center text-sm text-muted-foreground pt-8 border-t border-border/30">
+        <footer className="text-center text-xs text-muted-foreground pt-6 border-t border-border/30">
           <p>© 2025 Hazli Johar. All rights reserved.</p>
         </footer>
       </div>
