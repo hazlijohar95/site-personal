@@ -115,7 +115,7 @@ const Index = () => {
               </div>
               <div className="flex items-start gap-3">
                 <span className="inline-block w-2 h-2 bg-foreground rounded-full mt-2 flex-shrink-0"></span>
-                <p>Accountant turned founder who codes, designs, and ships products</p>
+                <p>Accountant turned founder who learn to code, designs, and ships products</p>
               </div>
               <div className="flex items-start gap-3">
                 <span className="inline-block w-2 h-2 bg-foreground rounded-full mt-2 flex-shrink-0"></span>
