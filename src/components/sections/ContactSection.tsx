@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Mail, Calendar, Loader2, Send } from 'lucide-react';
 
@@ -40,7 +39,6 @@ const ContactSection: React.FC = () => {
     `;
     document.head.appendChild(script);
     
-    // Reduced timeout for better UX
     const timeout = setTimeout(() => setIsCalendarLoading(false), 1500);
     return () => {
       clearTimeout(timeout);
@@ -61,8 +59,8 @@ const ContactSection: React.FC = () => {
       
       <div className="grid gap-4 sm:grid-cols-2 max-w-2xl mx-auto">
         <div className="group flex items-center gap-3 p-4 sm:p-5 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 hover:bg-card/50 transition-all duration-200 min-h-[60px]">
-          <div className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-            <Mail size={18} className="text-primary" />
+          <div className="flex items-center justify-center w-10 h-10 bg-foreground rounded-full group-hover:scale-110 transition-transform duration-200">
+            <Mail size={18} className="text-background" />
           </div>
           <div className="flex-1 min-w-0">
             <a href="mailto:work@hazli.wtf" className="block hover:text-primary transition-colors">
@@ -74,8 +72,8 @@ const ContactSection: React.FC = () => {
         </div>
         
         <div className="group flex items-center gap-3 p-4 sm:p-5 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 hover:bg-card/50 transition-all duration-200 min-h-[60px]">
-          <div className="flex items-center justify-center w-10 h-10 bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
-            <Calendar size={18} className="text-primary" />
+          <div className="flex items-center justify-center w-10 h-10 bg-foreground rounded-full group-hover:scale-110 transition-transform duration-200">
+            <Calendar size={18} className="text-background" />
           </div>
           <div className="flex-1 min-w-0">
             <button 
