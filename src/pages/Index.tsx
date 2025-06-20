@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import ThemeToggle from '@/components/layout/ThemeToggle';
 import { ArrowRight, Mail, Calendar, MapPin, ExternalLink, Loader2 } from 'lucide-react';
@@ -9,7 +8,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { toast } from '@/hooks/use-toast';
-
 const Index = () => {
   const isMobile = useIsMobile();
   const [isVideoLoading, setIsVideoLoading] = useState(true);
@@ -50,26 +48,21 @@ const Index = () => {
       Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
     `;
     document.head.appendChild(script);
-    
     const timeout = setTimeout(() => setIsCalendarLoading(false), 3000);
-    
     return () => {
       clearTimeout(timeout);
       document.head.removeChild(script);
     };
   }, []);
-
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "Message sent!",
-      description: "Thank you for reaching out. I'll get back to you soon.",
+      description: "Thank you for reaching out. I'll get back to you soon."
     });
     (e.target as HTMLFormElement).reset();
   };
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       {/* Theme Toggle */}
       <div className="fixed top-4 right-4 z-50">
         <ThemeToggle />
@@ -93,11 +86,7 @@ const Index = () => {
         <section className="space-y-6">
           <div className="flex flex-col md:flex-row gap-6 items-start">
             <div className="w-32 h-32 rounded-full overflow-hidden border border-border flex-shrink-0 mx-auto md:mx-0">
-              <img 
-                src="/lovable-uploads/c90088f8-4c29-43a9-a20b-4a664df5149f.png" 
-                alt="Hazli Johar" 
-                className="w-full h-full object-cover"
-              />
+              <img src="/lovable-uploads/c90088f8-4c29-43a9-a20b-4a664df5149f.png" alt="Hazli Johar" className="w-full h-full object-cover" />
             </div>
             
             <div className="flex-1 space-y-4 text-center md:text-left">
@@ -113,9 +102,7 @@ const Index = () => {
           </div>
 
           <div className="space-y-4">
-            <p className="text-lg font-medium text-center md:text-left">
-              "Currently on a mission @ Cynco."
-            </p>
+            
             
             <div className="space-y-3">
               <div className="flex items-start gap-3">
@@ -157,19 +144,15 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-4">
               <div className="space-y-3">
-                {[
-                  {
-                    title: "Cynco Raising $125k to Take on Xero and QuickBooks",
-                    source: "BFM 89.9",
-                    url: "https://www.bfm.my/content/podcast/cynco-raising-dollar125k-to-take-on-xero-and-quickbooks"
-                  },
-                  {
-                    title: "MyStartup Pre-Accelerator Cohort 5 Winners",
-                    source: "Business Today",
-                    url: "https://www.businesstoday.com.my/2025/03/04/mystartup-pre-accelerator-cohort-5-concludes-with-five-winning-startups/"
-                  }
-                ].map((item, index) => (
-                  <Card key={index} className="p-4 border border-border/50 hover:border-border transition-colors">
+                {[{
+                title: "Cynco Raising $125k to Take on Xero and QuickBooks",
+                source: "BFM 89.9",
+                url: "https://www.bfm.my/content/podcast/cynco-raising-dollar125k-to-take-on-xero-and-quickbooks"
+              }, {
+                title: "MyStartup Pre-Accelerator Cohort 5 Winners",
+                source: "Business Today",
+                url: "https://www.businesstoday.com.my/2025/03/04/mystartup-pre-accelerator-cohort-5-concludes-with-five-winning-startups/"
+              }].map((item, index) => <Card key={index} className="p-4 border border-border/50 hover:border-border transition-colors">
                     <a href={item.url} target="_blank" rel="noopener noreferrer" className="block space-y-2">
                       <p className="font-medium line-clamp-2 text-sm">{item.title}</p>
                       <div className="flex items-center gap-2 text-xs text-muted-foreground">
@@ -177,28 +160,17 @@ const Index = () => {
                         <ExternalLink size={12} />
                       </div>
                     </a>
-                  </Card>
-                ))}
+                  </Card>)}
               </div>
             </div>
             
             <div className="space-y-4">
               <div className="relative">
                 <div className="aspect-video bg-muted/20 overflow-hidden rounded-md border border-border/30 relative">
-                  {isVideoLoading && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-background/80">
+                  {isVideoLoading && <div className="absolute inset-0 flex items-center justify-center bg-background/80">
                       <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
-                    </div>
-                  )}
-                  <iframe 
-                    className="w-full h-full"
-                    src="https://www.youtube-nocookie.com/embed/6-vCOhPvleQ" 
-                    title="YouTube video player" 
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                    onLoad={() => setIsVideoLoading(false)}
-                  ></iframe>
+                    </div>}
+                  <iframe className="w-full h-full" src="https://www.youtube-nocookie.com/embed/6-vCOhPvleQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen onLoad={() => setIsVideoLoading(false)}></iframe>
                 </div>
                 <p className="text-xs text-muted-foreground mt-2">Featured on RTM (Youtube)</p>
               </div>
@@ -224,21 +196,11 @@ const Index = () => {
                 
                 <div className="flex items-center gap-3">
                   <Calendar size={16} />
-                  <button 
-                    className="hover:underline flex items-center gap-2" 
-                    data-cal-link="hazli-johar-cynco/30min" 
-                    data-cal-namespace="30min" 
-                    data-cal-config='{"layout":"month_view"}'
-                    disabled={isCalendarLoading}
-                  >
-                    {isCalendarLoading ? (
-                      <>
+                  <button className="hover:underline flex items-center gap-2" data-cal-link="hazli-johar-cynco/30min" data-cal-namespace="30min" data-cal-config='{"layout":"month_view"}' disabled={isCalendarLoading}>
+                    {isCalendarLoading ? <>
                         <Loader2 className="h-4 w-4 animate-spin" />
                         <span>Loading scheduler...</span>
-                      </>
-                    ) : (
-                      'Schedule a meeting'
-                    )}
+                      </> : 'Schedule a meeting'}
                   </button>
                 </div>
               </div>
@@ -275,8 +237,6 @@ const Index = () => {
           <p>© 2025 Hazli Johar. All rights reserved.</p>
         </footer>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
