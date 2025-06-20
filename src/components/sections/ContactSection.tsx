@@ -57,8 +57,8 @@ const ContactSection: React.FC = () => {
         
         <div className="space-y-3 sm:space-y-4">
           <div className="flex items-center gap-3 p-4 sm:p-5 bg-card/50 rounded-lg border border-border/30">
-            <Mail size={16} className="flex-shrink-0 sm:w-5 sm:h-5" />
-            <a href="mailto:work@hazli.wtf" className="hover:underline text-sm sm:text-base break-all">work@hazli.wtf</a>
+            <Mail size={16} className="flex-shrink-0 sm:w-5 sm:h-5 mt-0.5 sm:mt-0" />
+            <a href="mailto:work@hazli.wtf" className="hover:underline text-sm sm:text-base break-all leading-tight">work@hazli.wtf</a>
           </div>
           
           <div className="flex items-center gap-3 p-4 sm:p-5 bg-card/50 rounded-lg border border-border/30">
