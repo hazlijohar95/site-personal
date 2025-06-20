@@ -61,7 +61,7 @@ const ContactSection: React.FC = () => {
       <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 max-w-2xl mx-auto px-2 sm:px-0">
         <div className="group flex items-center gap-3 p-4 sm:p-5 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 hover:bg-card/50 transition-all duration-200 min-h-[70px] sm:min-h-[80px] touch-manipulation">
           <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-foreground rounded-full group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
-            <Mail size={16} sm:size={18} className="text-background" />
+            <Mail size={18} className="text-background" />
           </div>
           <div className="flex-1 min-w-0">
             <a href="mailto:work@hazli.wtf" className="block hover:text-primary transition-colors">
@@ -69,12 +69,12 @@ const ContactSection: React.FC = () => {
               <p className="text-sm sm:text-base font-medium break-all">work@hazli.wtf</p>
             </a>
           </div>
-          <Send size={14} sm:size={16} className="text-muted-foreground group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100" />
+          <Send size={16} className="text-muted-foreground group-hover:text-primary transition-colors opacity-0 group-hover:opacity-100" />
         </div>
         
         <div className="group flex items-center gap-3 p-4 sm:p-5 bg-card/30 rounded-lg border border-border/20 hover:border-border/40 hover:bg-card/50 transition-all duration-200 min-h-[70px] sm:min-h-[80px] touch-manipulation">
           <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-foreground rounded-full group-hover:scale-110 transition-transform duration-200 flex-shrink-0">
-            <Calendar size={16} sm:size={18} className="text-background" />
+            <Calendar size={18} className="text-background" />
           </div>
           <div className="flex-1 min-w-0">
             <button 
@@ -88,7 +88,7 @@ const ContactSection: React.FC = () => {
               <div className="flex items-center gap-2">
                 {isCalendarLoading ? (
                   <>
-                    <Loader2 className="h-3 w-3 sm:h-4 sm:w-4 animate-spin" />
+                    <Loader2 className="h-4 w-4 animate-spin" />
                     <span className="text-sm sm:text-base">Loading...</span>
                   </>
                 ) : (
