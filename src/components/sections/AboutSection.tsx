@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { MapPin } from 'lucide-react';
 import SocialLinks from '@/components/SocialLinks';
@@ -13,7 +12,6 @@ const AboutSection: React.FC = () => {
         
         <div className="text-center space-y-3 sm:space-y-4">
           <div>
-            <h2 className="text-xl sm:text-2xl font-bold mb-2">Hazli Johar</h2>
             <div className="flex items-center gap-2 text-sm sm:text-base text-muted-foreground justify-center mb-4">
               <MapPin size={14} className="flex-shrink-0 sm:w-4 sm:h-4" />
               <span className="text-center">Kuala Lumpur • Entrepreneur, 10+ Years Experience</span>
