@@ -57,11 +57,15 @@
     scroll-behavior: smooth;
     height: 100%;
     -webkit-text-size-adjust: 100%;
+    /* Better mobile scrolling */
+    -webkit-overflow-scrolling: touch;
   }
 
   body {
     @apply bg-background text-foreground font-sans overflow-x-hidden touch-manipulation;
     line-height: 1.6;
+    /* Prevent zoom on input focus on iOS */
+    -webkit-text-size-adjust: 100%;
   }
 
   ::selection {
@@ -92,6 +96,19 @@
   .prose strong {
     @apply font-semibold text-foreground;
   }
+  
+  /* Mobile-specific utilities */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+  
+  /* Better tap targets for mobile */
+  @media (max-width: 768px) {
+    .min-touch-target {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
 }
 
 /* Interactive hover effects */
@@ -113,6 +130,27 @@
   input[type="submit"] {
     min-height: 44px;
     min-width: 44px;
+  }
+  
+  /* Prevent zoom on inputs */
+  input, select, textarea {
+    font-size: 16px;
+  }
+  
+  /* Better scrolling performance */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Safe area insets for devices with notches/dynamic islands */
+@supports (padding: max(0px)) {
+  .safe-top {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+  
+  .safe-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
   }
 }
 

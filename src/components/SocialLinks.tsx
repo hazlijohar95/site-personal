@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Github, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { cn } from "@/lib/utils";
@@ -35,14 +36,14 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
   ];
 
   return (
-    <div className={cn("flex flex-wrap items-center gap-4 sm:gap-6", className)}>
+    <div className={cn("flex flex-wrap items-center gap-3 sm:gap-4 lg:gap-6", className)}>
       {links.map((link) => (
         <a 
           key={link.url}
           href={link.url} 
           target="_blank" 
           rel="noopener noreferrer"
-          className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 min-h-[44px] sm:min-h-0 py-2 sm:py-0"
+          className="group flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 min-h-[44px] py-2 px-2 -mx-2 rounded-md hover:bg-muted/30 touch-manipulation"
         >
           {showIcons && (
             <span className="group-hover:scale-110 transition-transform duration-200">

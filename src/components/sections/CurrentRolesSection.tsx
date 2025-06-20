@@ -30,20 +30,19 @@ const CurrentRolesSection: React.FC = () => {
   ];
 
   return (
-    <section className="space-y-6">
-      <h3 className="text-xl sm:text-2xl font-bold">Current Roles</h3>
+    <section className="space-y-4 sm:space-y-6">
+      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold px-2 sm:px-0">Current Roles</h3>
       
-      <div className="grid gap-3">
+      <div className="grid gap-3 px-2 sm:px-0">
         {roles.map((role, index) => (
           <div 
             key={index} 
-            className="group relative overflow-hidden bg-card/20 hover:bg-card/40 border border-border/10 hover:border-border/30 rounded-lg transition-all duration-300 hover:translate-y-[-2px] hover:shadow-sm"
-            style={{ animationDelay: `${index * 100}ms` }}
+            className="group relative overflow-hidden bg-card/20 hover:bg-card/40 border border-border/10 hover:border-border/30 rounded-lg transition-all duration-300 hover:translate-y-[-2px] hover:shadow-sm min-h-[80px] sm:min-h-[90px] flex items-center"
           >
-            <div className="p-4 sm:p-5">
+            <div className="p-4 sm:p-5 w-full">
               <div className="flex items-start justify-between gap-3 mb-2">
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
+                  <div className="flex items-center gap-2 mb-1 flex-wrap">
                     <h4 className="font-medium text-sm sm:text-base group-hover:text-primary transition-colors duration-200">{role.title}</h4>
                     {role.isActive && (
                       <div className="flex items-center gap-1.5">

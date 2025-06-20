@@ -15,15 +15,15 @@ const Index = () => {
         <ThemeToggle />
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-8 sm:space-y-10">
+      <div className="max-w-4xl mx-auto px-3 sm:px-6 py-4 sm:py-8 space-y-6 sm:space-y-10">
         <HeroSection />
         <AboutSection />
         <CurrentRolesSection />
         <MediaSection />
         <ContactSection />
 
-        {/* Footer */}
-        <footer className="text-center text-xs text-muted-foreground pt-6 border-t border-border/20">
+        {/* Footer with better mobile spacing */}
+        <footer className="text-center text-xs text-muted-foreground pt-8 pb-6 border-t border-border/20">
           <p>© 2025 Hazli Johar. All rights reserved.</p>
         </footer>
       </div>
