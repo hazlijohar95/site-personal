@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Github } from 'lucide-react';
+import { Github, BookOpen, Twitter, Instagram, Linkedin } from 'lucide-react';
 import { cn } from "@/lib/utils";
 
 interface SocialLinksProps {
@@ -12,55 +12,57 @@ interface SocialLinksProps {
  * SocialLinks - Component for displaying social media links
  * 
  * @param className - Additional CSS classes
- * @param showIcons - Whether to show icons alongside text (default: false)
+ * @param showIcons - Whether to show icons alongside text (default: true for minimalist design)
  */
 const SocialLinks: React.FC<SocialLinksProps> = ({ 
   className,
-  showIcons = false 
+  showIcons = true 
 }) => {
   const links = [
     { 
       label: "GitHub", 
       url: "https://github.com/hazlijohar95",
-      icon: <Github size={16} className="mr-1" />
+      icon: <Github size={16} className="flex-shrink-0" />
     },
     { 
       label: "Blog", 
       url: "https://hazli.bearblog.dev",
-      icon: null
+      icon: <BookOpen size={16} className="flex-shrink-0" />
     },
     { 
       label: "Twitter", 
       url: "https://x.com/hazlijohar",
-      icon: null
+      icon: <Twitter size={16} className="flex-shrink-0" />
     },
     { 
       label: "Instagram", 
       url: "https://www.instagram.com/hazlijohar/",
-      icon: null
+      icon: <Instagram size={16} className="flex-shrink-0" />
     },
     { 
       label: "LinkedIn", 
       url: "https://www.linkedin.com/in/hazli-johar/",
-      icon: null
+      icon: <Linkedin size={16} className="flex-shrink-0" />
     }
   ];
 
   return (
-    <div className={cn("font-mono text-sm", className)}>
+    <div className={cn("font-mono text-sm flex flex-wrap items-center gap-3 md:gap-4", className)}>
       {links.map((link, index) => (
-        <React.Fragment key={link.url}>
-          <a 
-            href={link.url} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:underline inline-flex items-center"
-          >
-            {showIcons && link.icon}
-            {link.label}
-          </a>
-          {index < links.length - 1 && <span className="mx-2">|</span>}
-        </React.Fragment>
+        <a 
+          key={link.url}
+          href={link.url} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="hover:underline inline-flex items-center gap-2 transition-colors hover:text-foreground/80"
+        >
+          {showIcons && (
+            <span className="text-foreground/70">
+              {link.icon}
+            </span>
+          )}
+          <span>{link.label}</span>
+        </a>
       ))}
     </div>
   );
