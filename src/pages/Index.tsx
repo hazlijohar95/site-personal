@@ -11,20 +11,28 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Theme Toggle */}
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-6 right-6 z-50">
         <ThemeToggle />
       </div>
 
-      <div className="max-w-4xl mx-auto px-3 sm:px-6 py-4 sm:py-8 space-y-6 sm:space-y-10">
+      <div className="max-w-2xl mx-auto px-6 py-12 space-y-16">
         <HeroSection />
+        
+        <div className="section-divider"></div>
         <AboutSection />
+        
+        <div className="section-divider"></div>
         <CurrentRolesSection />
+        
+        <div className="section-divider"></div>
         <MediaSection />
+        
+        <div className="section-divider"></div>
         <ContactSection />
 
-        {/* Footer with better mobile spacing */}
-        <footer className="text-center text-xs text-muted-foreground pt-8 pb-6 border-t border-border/20">
-          <p>© 2025 Hazli Johar. All rights reserved.</p>
+        {/* Simple footer */}
+        <footer className="text-center text-xs text-muted-foreground pt-12 border-t border-border/20">
+          <p>© 2025 Hazli Johar</p>
         </footer>
       </div>
     </div>

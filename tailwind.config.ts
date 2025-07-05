@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,25 +20,26 @@ export default {
     },
     extend: {
       fontFamily: {
+        mono: [
+          "IBM Plex Mono",
+          "JetBrains Mono",
+          "SF Mono",
+          "Consolas",
+          "Liberation Mono",
+          "Menlo",
+          "Courier New",
+          "monospace"
+        ],
         sans: [
-          "Inter var",
-          "Inter",
+          "IBM Plex Mono",
+          "JetBrains Mono",
           "system-ui",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",
           "Roboto",
-          "Helvetica Neue",
-          "Arial",
-          "Noto Sans",
-          "sans-serif",
-          "Apple Color Emoji",
-          "Segoe UI Emoji",
-          "Segoe UI Symbol",
-          "Noto Color Emoji"
-        ],
-        mono: ["SF Mono", "Menlo", "Monaco", "Consolas", "Liberation Mono", "Courier New", "monospace"],
-        georgia: ["Georgia", "Cambria", "Times New Roman", "Times", "serif"],
+          "sans-serif"
+        ]
       },
       colors: {
         border: 'hsl(var(--border))',
@@ -88,40 +90,20 @@ export default {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
-        'fade-in': {
-          '0%': { opacity: '0', transform: 'translateY(10px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
+        'blink': {
+          '0%, 50%': { opacity: '1' },
+          '51%, 100%': { opacity: '0' },
         },
-        'scale-in': {
-          '0%': { opacity: '0', transform: 'scale(0.95)' },
-          '100%': { opacity: '1', transform: 'scale(1)' },
-        },
-        'float': {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        'dock-hover': {
-          '0%': { transform: 'scale(1)' },
-          '100%': { transform: 'scale(1.2)' },
-        },
-        'slide-up': {
-          "0%": { transform: "translateY(10px)", opacity: "0" },
-          "100%": { transform: "translateY(0)", opacity: "1" }
-        },
-        "fade-in": {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" }
+        'typing': {
+          'from': { width: '0' },
+          'to': { width: '100%' },
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'fade-in': 'fade-in 0.5s ease-out',
-        'scale-in': 'scale-in 0.3s ease-out',
-        'float': 'float 6s ease-in-out infinite',
-        'dock-hover': 'dock-hover 0.2s ease-out',
-        'slide-up': 'slide-up 0.5s ease-out',
-        'progress-fill': 'progress-fill 2s ease-out'
+        'blink': 'blink 1s infinite',
+        'typing': 'typing 2s steps(40, end)'
       }
     },
   },
