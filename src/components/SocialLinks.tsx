@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { cn } from "@/lib/utils";
+import { useSocialLinks } from '@/hooks/useSocialLinks';
 
 interface SocialLinksProps {
   className?: string;
@@ -11,18 +12,23 @@ const SocialLinks: React.FC<SocialLinksProps> = ({
   className,
   showIcons = true 
 }) => {
-  const links = [
-    { label: "GitHub", url: "https://github.com/hazlijohar95" },
-    { label: "Twitter", url: "https://x.com/hazlijohar" },
-    { label: "Instagram", url: "https://www.instagram.com/hazlijohar/" },
-    { label: "LinkedIn", url: "https://www.linkedin.com/in/hazli-johar/" }
-  ];
+  const { data: socialLinks, isLoading } = useSocialLinks();
+
+  if (isLoading) {
+    return (
+      <div className={cn("flex flex-wrap items-center gap-4", className)}>
+        {[1, 2, 3, 4].map((index) => (
+          <div key={index} className="h-4 w-16 bg-gray-200 rounded animate-pulse"></div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className={cn("flex flex-wrap items-center gap-4", className)}>
-      {links.map((link) => (
+      {socialLinks?.map((link) => (
         <a 
-          key={link.url}
+          key={link.id}
           href={link.url} 
           target="_blank" 
           rel="noopener noreferrer"

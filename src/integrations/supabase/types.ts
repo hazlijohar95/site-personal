@@ -9,7 +9,144 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
-      [_ in never]: never
+      media: {
+        Row: {
+          created_at: string | null
+          id: string
+          is_featured: boolean | null
+          sort_order: number | null
+          source: string
+          title: string
+          type: string
+          updated_at: string | null
+          url: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          is_featured?: boolean | null
+          sort_order?: number | null
+          source: string
+          title: string
+          type: string
+          updated_at?: string | null
+          url: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          is_featured?: boolean | null
+          sort_order?: number | null
+          source?: string
+          title?: string
+          type?: string
+          updated_at?: string | null
+          url?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          bio: string
+          created_at: string | null
+          email: string | null
+          id: string
+          location: string
+          name: string
+          profile_image_url: string | null
+          specialties: string
+          tagline: string
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          bio: string
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          location?: string
+          name?: string
+          profile_image_url?: string | null
+          specialties?: string
+          tagline?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Update: {
+          bio?: string
+          created_at?: string | null
+          email?: string | null
+          id?: string
+          location?: string
+          name?: string
+          profile_image_url?: string | null
+          specialties?: string
+          tagline?: string
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      roles: {
+        Row: {
+          company: string
+          created_at: string | null
+          description: string
+          id: string
+          is_active: boolean | null
+          sort_order: number | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          company: string
+          created_at?: string | null
+          description: string
+          id?: string
+          is_active?: boolean | null
+          sort_order?: number | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          company?: string
+          created_at?: string | null
+          description?: string
+          id?: string
+          is_active?: boolean | null
+          sort_order?: number | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      social_links: {
+        Row: {
+          created_at: string | null
+          id: string
+          is_active: boolean | null
+          label: string
+          sort_order: number | null
+          url: string
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          label: string
+          sort_order?: number | null
+          url: string
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          is_active?: boolean | null
+          label?: string
+          sort_order?: number | null
+          url?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

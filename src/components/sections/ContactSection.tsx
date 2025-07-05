@@ -1,7 +1,10 @@
 
 import React, { useEffect } from 'react';
+import { useProfile } from '@/hooks/useProfile';
 
 const ContactSection: React.FC = () => {
+  const { data: profile, isLoading } = useProfile();
+
   useEffect(() => {
     const script = document.createElement('script');
     script.type = 'text/javascript';
@@ -44,15 +47,31 @@ const ContactSection: React.FC = () => {
     };
   }, []);
 
+  if (isLoading) {
+    return (
+      <section className="space-y-6">
+        <h2 className="text-lg font-medium">Contact</h2>
+        <div className="space-y-4">
+          <div className="simple-card">
+            <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+          </div>
+          <div className="simple-card">
+            <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="space-y-6">
       <h2 className="text-lg font-medium">Contact</h2>
       
       <div className="space-y-4">
         <div className="simple-card">
-          <a href="mailto:work@hazli.wtf" className="block">
+          <a href={`mailto:${profile?.email || 'work@hazli.wtf'}`} className="block">
             <p className="text-xs text-muted-foreground mb-1">Email</p>
-            <p className="text-sm font-medium">work@hazli.wtf</p>
+            <p className="text-sm font-medium">{profile?.email || 'work@hazli.wtf'}</p>
           </a>
         </div>
         

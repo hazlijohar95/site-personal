@@ -1,19 +1,35 @@
 
 import React from 'react';
+import { useMedia } from '@/hooks/useMedia';
 
 const MediaSection: React.FC = () => {
-  const mediaItems = [
-    {
-      title: "Cynco Raising $125k to Take on Xero and QuickBooks",
-      source: "BFM 89.9",
-      url: "https://www.bfm.my/content/podcast/cynco-raising-dollar125k-to-take-on-xero-and-quickbooks"
-    },
-    {
-      title: "MyStartup Pre-Accelerator Cohort 5 Winners",
-      source: "Business Today",
-      url: "https://www.businesstoday.com.my/2025/03/04/mystartup-pre-accelerator-cohort-5-concludes-with-five-winning-startups/"
-    }
-  ];
+  const { data: media, isLoading } = useMedia();
+
+  if (isLoading) {
+    return (
+      <section className="space-y-6">
+        <h2 className="text-lg font-medium">Media</h2>
+        <div className="space-y-6">
+          <div className="space-y-3">
+            <h3 className="text-sm font-medium text-muted-foreground">Recent Features</h3>
+            <div className="space-y-2">
+              {[1, 2].map((index) => (
+                <div key={index} className="simple-card">
+                  <div className="space-y-1">
+                    <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                    <div className="h-3 bg-gray-200 rounded animate-pulse w-24"></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  const featuredMedia = media?.filter(item => item.type !== 'video') || [];
+  const videoMedia = media?.find(item => item.type === 'video');
 
   return (
     <section className="space-y-6">
@@ -23,8 +39,8 @@ const MediaSection: React.FC = () => {
         <div className="space-y-3">
           <h3 className="text-sm font-medium text-muted-foreground">Recent Features</h3>
           <div className="space-y-2">
-            {mediaItems.map((item, index) => (
-              <div key={index} className="simple-card">
+            {featuredMedia.map((item) => (
+              <div key={item.id} className="simple-card">
                 <a href={item.url} target="_blank" rel="noopener noreferrer" className="block space-y-1">
                   <p className="text-sm font-medium leading-snug">{item.title}</p>
                   <p className="text-xs text-muted-foreground">{item.source}</p>
